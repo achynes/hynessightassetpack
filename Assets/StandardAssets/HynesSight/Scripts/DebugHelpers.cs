@@ -2,7 +2,7 @@
 
 namespace HynesSight
 {
-	public static class DebugUtility
+	public static class DebugHelpers
 	{
 		public static void PrintSwitchDefaultError()
 		{

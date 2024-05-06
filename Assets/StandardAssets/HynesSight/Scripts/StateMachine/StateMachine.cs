@@ -70,10 +70,10 @@ namespace HynesSight.StateMachine
             }
         }
         
-        public bool ChangeState(StateType stateType_, params object[] stateChangeData_)
+        public bool ChangeState(StateType stateType, params object[] stateChangeData)
         {
             StateType previousStateType = StateType.None;
-            State_Base nextState = StateInstances[stateType_];
+            State_Base nextState = StateInstances[stateType];
 
             if (!nextState.CanEnter(previousStateType))
             {
@@ -87,7 +87,7 @@ namespace HynesSight.StateMachine
             }
 
             CurrentState = nextState;
-            CurrentState.OnEnter(previousStateType, stateChangeData_);
+            CurrentState.OnEnter(previousStateType, stateChangeData);
 
             return true;
         }
@@ -108,9 +108,9 @@ namespace HynesSight.StateMachine
 			}
 		}
 
-		public void NotifyState(params object[] notificationData_)
+		public void NotifyState(params object[] notificationData)
         {
-            CurrentState.Notify(notificationData_);
+            CurrentState.Notify(notificationData);
         }
     }
 }

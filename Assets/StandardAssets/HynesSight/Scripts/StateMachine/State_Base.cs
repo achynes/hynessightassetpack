@@ -11,18 +11,18 @@
         /// </summary>
         public virtual StateType StateType { get { return StateType.None; } }
 
-        public virtual void OnEnter(StateType previousState, params object[] stateChangeData_) { }
+        public virtual void OnEnter(StateType previousState, params object[] stateChangeData) { }
         public virtual void OnExit() { }
-        public virtual void Update(float deltaTime_) { }
-        public virtual void FixedUpdate(float fixedDeltaTime_) { }
-		public virtual void Notify(params object[] notificationData_) { }
+        public virtual void Update(float deltaTime) { }
+        public virtual void FixedUpdate(float fixedDeltaTime) { }
+		public virtual void Notify(params object[] notificationData) { }
         
         /// <summary>
         /// This function is called once when the state object is instantiated along with the StateMachine. Don't forget to call the base method when overriding.
         /// </summary>
-        public virtual void Init(StateMachine OwnerStateMachine_)
+        public virtual void Init(StateMachine OwnerStateMachine)
         {
-            _OwnerStateMachine = OwnerStateMachine_;
+            _OwnerStateMachine = OwnerStateMachine;
         }
 
         /// <summary>

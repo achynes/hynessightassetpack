@@ -18,14 +18,14 @@ namespace HynesSight
 
 			private bool _paused;
 
-			public EchoHandler(DynamicParamsDelegate delegate_, float delay_, float currentTime_, int repeatCount_, bool useUnscaledTime_, params object[] params_)
+			public EchoHandler(DynamicParamsDelegate inDelegate, float delay, float currentTime, int repeatCount, bool useUnscaledTime, params object[] inParams)
 			{
-				_delegate = delegate_;
-				_delay = delay_;
-				_startTime = currentTime_;
-				_repeatCount = repeatCount_;
-				_useUnscaledTime = useUnscaledTime_;
-				_params = params_;
+				_delegate = inDelegate;
+				_delay = delay;
+				_startTime = currentTime;
+				_repeatCount = repeatCount;
+				_useUnscaledTime = useUnscaledTime;
+				_params = inParams;
 			}
 
 			public bool CheckTime()
@@ -57,14 +57,14 @@ namespace HynesSight
 				return false;
 			}
 
-			public void TogglePaused(bool paused_)
+			public void TogglePaused(bool paused)
 			{
-				_paused = paused_;
+				_paused = paused;
 			}
 
-			public void ResetTimer(float currentTime_)
+			public void ResetTimer(float currentTime)
 			{
-				_startTime = currentTime_;
+				_startTime = currentTime;
 			}
 		}
 		
@@ -147,52 +147,52 @@ namespace HynesSight
 			}
 		}
 
-		private static int Echo(DynamicParamsDelegate delegate_, float delay_, float currentTime_, int repeatCount_, bool useUnscaledTime_ = false, params object[] params_)
+		private static int Echo(DynamicParamsDelegate inDelegate, float delay, float currentTime, int repeatCount, bool useUnscaledTime = false, params object[] inParams)
 		{
 			PreEchoChecks();
 
-			_echoHandlers.Add(_currentIndex, new EchoHandler(delegate_, delay_, currentTime_, repeatCount_, useUnscaledTime_, params_));
+			_echoHandlers.Add(_currentIndex, new EchoHandler(inDelegate, delay, currentTime, repeatCount, useUnscaledTime, inParams));
 
 			return _currentIndex;
 		}
 
-		public static void ResumeEcho(int index_)
+		public static void ResumeEcho(int index)
 		{
 			CheckInitialised();
 
-			if (_echoHandlers.ContainsKey(index_))
+			if (_echoHandlers.ContainsKey(index))
 			{
-				_echoHandlers[index_].TogglePaused(false);
+				_echoHandlers[index].TogglePaused(false);
 			}
 		}
 
-		public static void PauseEcho(int index_)
+		public static void PauseEcho(int index)
 		{
 			CheckInitialised();
 
-			if (_echoHandlers.ContainsKey(index_))
+			if (_echoHandlers.ContainsKey(index))
 			{
-				_echoHandlers[index_].TogglePaused(true);
+				_echoHandlers[index].TogglePaused(true);
 			}
 		}
 
-		public static void ResetEchoTimer(int index_)
+		public static void ResetEchoTimer(int index)
 		{
 			CheckInitialised();
 
-			if (_echoHandlers.ContainsKey(index_))
+			if (_echoHandlers.ContainsKey(index))
 			{
-				_echoHandlers[index_].ResetTimer(Time.time);
+				_echoHandlers[index].ResetTimer(Time.time);
 			}
 		}
 
-		public static void StopEcho(int index_)
+		public static void StopEcho(int index)
 		{
 			CheckInitialised();
 
-			if (_echoHandlers.ContainsKey(index_))
+			if (_echoHandlers.ContainsKey(index))
 			{
-				_echoHandlers.Remove(index_);
+				_echoHandlers.Remove(index);
 			}
 		}
 
@@ -211,9 +211,9 @@ namespace HynesSight
 			}
 		}
 
-		public static bool IsEchoRunningAtIndex(int index_)
+		public static bool IsEchoRunningAtIndex(int index)
 		{
-			return _echoHandlers.ContainsKey(index_);
+			return _echoHandlers.ContainsKey(index);
 		}
 	}
 }

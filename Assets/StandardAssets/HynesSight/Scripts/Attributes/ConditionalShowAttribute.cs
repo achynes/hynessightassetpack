@@ -26,30 +26,30 @@ namespace HynesSight.Attributes
 		public ConditionType _condition;
 #endif
 
-		public ConditionalShowAttribute(string boolField_, bool relativeBoolValue_)
+		public ConditionalShowAttribute(string boolField, bool relativeBoolValue)
 		{
 #if UNITY_EDITOR
-			_field = boolField_;
-			_relativeValue = relativeBoolValue_;
+			_field = boolField;
+			_relativeValue = relativeBoolValue;
 			_condition = ConditionType.EqualTo;
 #endif
 		}
 
-		public ConditionalShowAttribute(string field_, object relativeValue_, ConditionType condition_)
+		public ConditionalShowAttribute(string field, object relativeValue, ConditionType condition)
 		{
 #if UNITY_EDITOR
-			_field = field_;
-			_relativeValue = relativeValue_;
-			_condition = condition_;
+			_field = field;
+			_relativeValue = relativeValue;
+			_condition = condition;
 #endif
 		}
 
-		public ConditionalShowAttribute(string field_, string relativeField_, ConditionType condition_)
+		public ConditionalShowAttribute(string field, string relativeField, ConditionType condition)
 		{
 #if UNITY_EDITOR
-			_field = field_;
-			_relativeField = relativeField_;
-			_condition = condition_;
+			_field = field;
+			_relativeField = relativeField;
+			_condition = condition;
 #endif
 		}
 	}

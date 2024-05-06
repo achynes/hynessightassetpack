@@ -11,10 +11,10 @@ namespace HynesSight.Attributes
 		public string _nameToDisplay;
 #endif
 
-		public DisplayNameAttribute(string nameToDisplay_)
+		public DisplayNameAttribute(string nameToDisplay)
 		{
 #if UNITY_EDITOR
-			_nameToDisplay = nameToDisplay_;
+			_nameToDisplay = nameToDisplay;
 #endif
 		}
 	}

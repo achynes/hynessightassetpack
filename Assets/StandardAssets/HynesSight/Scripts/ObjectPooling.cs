@@ -14,13 +14,13 @@ namespace HynesSight.ObjectPooling
 		Dictionary<GameObject, List<IPoolableComponent>> _pooledGameObjectsWithComponents;
 		List<GameObject> _currentlyUnpooledGameObjects;
 
-		public GameObjectPool(GameObject originalObject_, int initialPoolSize_)
+		public GameObjectPool(GameObject originalObject, int initialPoolSize)
 		{
-			_originalObject = originalObject_;
-			_pooledGameObjectsWithComponents = new Dictionary<GameObject, List<IPoolableComponent>>(initialPoolSize_);
-			_currentlyUnpooledGameObjects = new List<GameObject>(initialPoolSize_);
+			_originalObject = originalObject;
+			_pooledGameObjectsWithComponents = new Dictionary<GameObject, List<IPoolableComponent>>(initialPoolSize);
+			_currentlyUnpooledGameObjects = new List<GameObject>(initialPoolSize);
         
-			for (int n = 0; n < initialPoolSize_; n++)
+			for (int n = 0; n < initialPoolSize; n++)
 			{
 				AddNewPoolMember();
 			}
@@ -51,10 +51,10 @@ namespace HynesSight.ObjectPooling
 			return newPoolMember;
 		}
 
-		public void ReturnGameObjectToPool(GameObject gameObjectToReturn_)
+		public void ReturnGameObjectToPool(GameObject gameObjectToReturn)
 		{
-			gameObjectToReturn_.SetActive(false);
-			_currentlyUnpooledGameObjects.Remove(gameObjectToReturn_);
+			gameObjectToReturn.SetActive(false);
+			_currentlyUnpooledGameObjects.Remove(gameObjectToReturn);
 		}
 
 		private GameObject AddNewPoolMember()

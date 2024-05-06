@@ -39,24 +39,24 @@ namespace HynesSight.Tweening
 							   _onPingEndEvent,
 							   _onPongEndEvent;
 
-			protected abstract void ModifyTarget(float lerpValue_);
+			protected abstract void ModifyTarget(float lerpValue);
 			protected abstract bool CanTween();
 
-			protected TweenHelper_Base(float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
+			protected TweenHelper_Base(float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
 			{
 				_timer = 0.0f;
 				_isPinging = true;
-				_pingDuration = pingDuration_;
-				_pongDuration = pongDuration_;
-				_loopCounter = loopCount_;
-				_useUnscaledTime = useUnscaledTime_;
-				_useFixedDeltaTime = useFixedDeltaTime_;
-				_onTweenEndEvent = onTweenEndEvent_;
-				_onPingEndEvent = onPingEndEvent_;
-				_onPongEndEvent = onPongEndEvent_;
+				_pingDuration = pingDuration;
+				_pongDuration = pongDuration;
+				_loopCounter = loopCount;
+				_useUnscaledTime = useUnscaledTime;
+				_useFixedDeltaTime = useFixedDeltaTime;
+				_onTweenEndEvent = onTweenEndEvent;
+				_onPingEndEvent = onPingEndEvent;
+				_onPongEndEvent = onPongEndEvent;
 
-				_pingCurve = (null == pingCurve_) ? _defaultCurve : pingCurve_;
-				_pongCurve = (null == pongCurve_) ? _defaultCurve : pongCurve_;
+				_pingCurve = (null == pingCurve) ? _defaultCurve : pingCurve;
+				_pongCurve = (null == pongCurve) ? _defaultCurve : pongCurve;
 			}
 
 			/// <summary>
@@ -146,9 +146,9 @@ namespace HynesSight.Tweening
 				return isFinished;
 			}
 
-			public void TogglePaused(bool paused_)
+			public void TogglePaused(bool paused)
 			{
-				_isPaused = paused_;
+				_isPaused = paused;
 			}
 
 			public void OnFinished()
@@ -177,13 +177,13 @@ namespace HynesSight.Tweening
 			private Color32 _startColor,
 							_endColor;
 
-			public ColorTweenHelper_Renderer(Renderer renderer_, Color32 startColor_, Color32 endColor_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, int materialIndex_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public ColorTweenHelper_Renderer(Renderer renderer, Color32 startColor, Color32 endColor, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, int materialIndex, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_renderer = renderer_;
-				_startColor = startColor_;
-				_endColor = endColor_;
-				_materialIndex = materialIndex_;
+				_renderer = renderer;
+				_startColor = startColor;
+				_endColor = endColor;
+				_materialIndex = materialIndex;
 			}
 
 			protected override bool CanTween()
@@ -191,9 +191,9 @@ namespace HynesSight.Tweening
 				return null != _renderer;
 			}
 
-			protected override void ModifyTarget(float lerpValue_)
+			protected override void ModifyTarget(float lerpValue)
 			{
-				_renderer.materials[_materialIndex].color = Color32.Lerp(_startColor, _endColor, lerpValue_);
+				_renderer.materials[_materialIndex].color = Color32.Lerp(_startColor, _endColor, lerpValue);
 			}
 		}
 
@@ -204,12 +204,12 @@ namespace HynesSight.Tweening
 			private Color32 _startColor,
 							_endColor;
 
-			public ColorTweenHelper_Graphic(Graphic graphic_, Color32 startColor_, Color32 endColor_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public ColorTweenHelper_Graphic(Graphic graphic, Color32 startColor, Color32 endColor, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_graphic = graphic_;
-				_startColor = startColor_;
-				_endColor = endColor_;
+				_graphic = graphic;
+				_startColor = startColor;
+				_endColor = endColor;
 			}
 
 			protected override bool CanTween()
@@ -217,9 +217,9 @@ namespace HynesSight.Tweening
 				return null != _graphic;
 			}
 
-			protected override void ModifyTarget(float lerpValue_)
+			protected override void ModifyTarget(float lerpValue)
 			{
-				_graphic.color = Color32.Lerp(_startColor, _endColor, lerpValue_);
+				_graphic.color = Color32.Lerp(_startColor, _endColor, lerpValue);
 			}
 		}
 
@@ -236,14 +236,14 @@ namespace HynesSight.Tweening
 				return null != _transform;
 			}
 
-			public TransformTweenHelper_Base(Transform transform_, bool muteX_, bool muteY_, bool muteZ_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public TransformTweenHelper_Base(Transform transform, bool muteX, bool muteY, bool muteZ, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_transform = transform_;
+				_transform = transform;
 
-				_muteX = muteX_;
-				_muteY = muteY_;
-				_muteZ = muteZ_;
+				_muteX = muteX;
+				_muteY = muteY;
+				_muteZ = muteZ;
 			}
 		}
 
@@ -254,17 +254,17 @@ namespace HynesSight.Tweening
 
 			bool _isLocalPosition;
 
-			public PositionTweenHelper(Transform transform_, Vector3 startPosition_, Vector3 endPosition_, bool isLocalPosition_, bool muteX_, bool muteY_, bool muteZ_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(transform_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public PositionTweenHelper(Transform transform, Vector3 startPosition, Vector3 endPosition, bool isLocalPosition, bool muteX, bool muteY, bool muteZ, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(transform, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_startPosition = startPosition_;
-				_endPosition = endPosition_;
-				_isLocalPosition = isLocalPosition_;
+				_startPosition = startPosition;
+				_endPosition = endPosition;
+				_isLocalPosition = isLocalPosition;
 			}
 
-			protected override void ModifyTarget(float lerpValue_)
+			protected override void ModifyTarget(float lerpValue)
 			{
-				Vector3 newPosition = Vector3.Lerp(_startPosition, _endPosition, lerpValue_);
+				Vector3 newPosition = Vector3.Lerp(_startPosition, _endPosition, lerpValue);
 
 				if (_muteX)
 				{
@@ -301,23 +301,23 @@ namespace HynesSight.Tweening
 
 			bool _isLocalRotation;
 
-			public RotationTweenHelper(Transform transform_, Vector3 startRotation_, Vector3 endRotation_, bool isLocalRotation_, bool muteX_, bool muteY_, bool muteZ_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(transform_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public RotationTweenHelper(Transform transform, Vector3 startRotation, Vector3 endRotation, bool isLocalRotation, bool muteX, bool muteY, bool muteZ, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(transform, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_startRotationX = startRotation_.x;
-				_startRotationY = startRotation_.y;
-				_startRotationZ = startRotation_.z;
-				_endRotationX = endRotation_.x;
-				_endRotationY = endRotation_.y;
-				_endRotationZ = endRotation_.z;
-				_isLocalRotation = isLocalRotation_;
+				_startRotationX = startRotation.x;
+				_startRotationY = startRotation.y;
+				_startRotationZ = startRotation.z;
+				_endRotationX = endRotation.x;
+				_endRotationY = endRotation.y;
+				_endRotationZ = endRotation.z;
+				_isLocalRotation = isLocalRotation;
 			}
 			
-			protected override void ModifyTarget(float lerpValue_)
+			protected override void ModifyTarget(float lerpValue)
 			{
-				float xRotation = _muteX ? _transform.rotation.eulerAngles.x : Mathf.Lerp(_startRotationX, _endRotationX, lerpValue_),
-					  yRotation = _muteY ? _transform.rotation.eulerAngles.y : Mathf.Lerp(_startRotationY, _endRotationY, lerpValue_),
-					  zRotation = _muteZ ? _transform.rotation.eulerAngles.z : Mathf.Lerp(_startRotationZ, _endRotationZ, lerpValue_);
+				float xRotation = _muteX ? _transform.rotation.eulerAngles.x : Mathf.Lerp(_startRotationX, _endRotationX, lerpValue),
+					  yRotation = _muteY ? _transform.rotation.eulerAngles.y : Mathf.Lerp(_startRotationY, _endRotationY, lerpValue),
+					  zRotation = _muteZ ? _transform.rotation.eulerAngles.z : Mathf.Lerp(_startRotationZ, _endRotationZ, lerpValue);
 
 				Quaternion _newRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
 
@@ -337,16 +337,16 @@ namespace HynesSight.Tweening
 			private Vector3 _startScale,
 							_endScale;
 
-			public ScaleTweenHelper(Transform transform_, Vector3 startScale_, Vector3 endScale_, bool muteX_, bool muteY_, bool muteZ_, float pingDuration_, float pongDuration_, int loopCount_, bool useUnscaledTime_, bool useFixedDeltaTime_, AnimationCurve pingCurve_, AnimationCurve pongCurve_, UnityEvent onTweenEndEvent_, UnityEvent onPingEndEvent_, UnityEvent onPongEndEvent_)
-				: base(transform_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, useFixedDeltaTime_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_)
+			public ScaleTweenHelper(Transform transform, Vector3 startScale, Vector3 endScale, bool muteX, bool muteY, bool muteZ, float pingDuration, float pongDuration, int loopCount, bool useUnscaledTime, bool useFixedDeltaTime, AnimationCurve pingCurve, AnimationCurve pongCurve, UnityEvent onTweenEndEvent, UnityEvent onPingEndEvent, UnityEvent onPongEndEvent)
+				: base(transform, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, useFixedDeltaTime, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent)
 			{
-				_startScale = startScale_;
-				_endScale = endScale_;
+				_startScale = startScale;
+				_endScale = endScale;
 			}
 			
-			protected override void ModifyTarget(float lerpValue_)
+			protected override void ModifyTarget(float lerpValue)
 			{
-				Vector3 newScale = Vector3.Lerp(_startScale, _endScale, lerpValue_);
+				Vector3 newScale = Vector3.Lerp(_startScale, _endScale, lerpValue);
 
 				if (_muteX)
 				{
@@ -456,18 +456,18 @@ namespace HynesSight.Tweening
 		/// <typeparam name="T">The type of the Dictionary Keys.</typeparam>
 		/// <param name="tweenHelpers_">The Dictionary of Tweeners to update.</param>
 		/// <param name="tweensToRemove_">List to use in cleaning up finished Tweens.</param>
-		private static void UpdateTweenHelpers<T>(Dictionary<T, TweenHelper_Base> tweenHelpers_, List<T> tweensToRemove_)
+		private static void UpdateTweenHelpers<T>(Dictionary<T, TweenHelper_Base> tweenHelpers, List<T> tweensToRemove)
 		{
-			if (tweenHelpers_.Count > 0)
+			if (tweenHelpers.Count > 0)
 			{
 				float deltaTime = Time.deltaTime;
 
-				foreach (KeyValuePair<T, TweenHelper_Base> tweenHelper in tweenHelpers_)
+				foreach (KeyValuePair<T, TweenHelper_Base> tweenHelper in tweenHelpers)
 				{
-					if (!tweensToRemove_.Contains(tweenHelper.Key) && tweenHelper.Value.UpdateLerp())
+					if (!tweensToRemove.Contains(tweenHelper.Key) && tweenHelper.Value.UpdateLerp())
 					{
 						tweenHelper.Value.OnFinished();
-						tweensToRemove_.Add(tweenHelper.Key);
+						tweensToRemove.Add(tweenHelper.Key);
 					}
 				}
 			}
@@ -594,17 +594,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void ColorLerp(SpriteRenderer renderer_, Color32 startColor_, Color32 endColor_, float duration_, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void ColorLerp(SpriteRenderer renderer, Color32 startColor, Color32 endColor, float duration, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			ColorLerp(renderer_, startColor_, endColor_, duration_, 0, loopCount_, useUnscaledTime_, updateType_, lerpCurve_, onTweenEndEvent_, onLerpEndEvent_);
+			ColorLerp(renderer, startColor, endColor, duration, 0, loopCount, useUnscaledTime, updateType, lerpCurve, onTweenEndEvent, onLerpEndEvent);
 		}
 
 		/// <summary>
 		/// Lerps a SpriteRenderer's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorLerp(SpriteRenderer renderer_, Color32 startColor_, Color32 endColor_, LerpData lerpData_)
+		public static void ColorLerp(SpriteRenderer renderer, Color32 startColor, Color32 endColor, LerpData lerpData)
 		{
-			ColorLerp(renderer_, startColor_, endColor_, lerpData_._lerpDuration, 0, lerpData_._loopCount, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			ColorLerp(renderer, startColor, endColor, lerpData._lerpDuration, 0, lerpData._loopCount, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -614,17 +614,17 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void ColorPingPong(SpriteRenderer renderer_, Color32 startColor_, Color32 endColor_, float pingDuration_, float pongDuration_, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void ColorPingPong(SpriteRenderer renderer, Color32 startColor, Color32 endColor, float pingDuration, float pongDuration, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
-			ColorPingPong(renderer_, startColor_, endColor_, pingDuration_, pongDuration_, 0, loopCount_, useUnscaledTime_, updateType_, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_);
+			ColorPingPong(renderer, startColor, endColor, pingDuration, pongDuration, 0, loopCount, useUnscaledTime, updateType, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent);
 		}
 
 		/// <summary>
 		/// PingPong a SpriteRenderer's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorPingPong(SpriteRenderer renderer_, Color32 startColor_, Color32 endColor_, PingPongData pingPongData_)
+		public static void ColorPingPong(SpriteRenderer renderer, Color32 startColor, Color32 endColor, PingPongData pingPongData)
 		{
-			ColorPingPong(renderer_, startColor_, endColor_, pingPongData_._pingDuration, pingPongData_._pongDuration, 0, pingPongData_._loopCount, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			ColorPingPong(renderer, startColor, endColor, pingPongData._pingDuration, pingPongData._pongDuration, 0, pingPongData._loopCount, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
 		/// <summary>
@@ -634,17 +634,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void ColorLerp(Renderer renderer_, Color32 startColor_, Color32 endColor_, float duration_, int materialIndex_ = 0, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void ColorLerp(Renderer renderer, Color32 startColor, Color32 endColor, float duration, int materialIndex = 0, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			ColorPingPong(renderer_, startColor_, endColor_, duration_, 0.0f, materialIndex_, loopCount_, useUnscaledTime_, updateType_, lerpCurve_, null, onTweenEndEvent_, onLerpEndEvent_, null);
+			ColorPingPong(renderer, startColor, endColor, duration, 0.0f, materialIndex, loopCount, useUnscaledTime, updateType, lerpCurve, null, onTweenEndEvent, onLerpEndEvent, null);
 		}
 
 		/// <summary>
 		/// Lerps a Renderer's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorLerp(Renderer renderer_, Color32 startColor_, Color32 endColor_, LerpData lerpData_, int materialIndex_ = 0)
+		public static void ColorLerp(Renderer renderer, Color32 startColor, Color32 endColor, LerpData lerpData, int materialIndex = 0)
 		{
-			ColorLerp(renderer_, startColor_, endColor_, lerpData_._lerpDuration, materialIndex_, lerpData_._loopCount, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			ColorLerp(renderer, startColor, endColor, lerpData._lerpDuration, materialIndex, lerpData._loopCount, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -655,10 +655,10 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void ColorPingPong(Renderer renderer_, Color32 firstColor_, Color32 secondColor_, float pingDuration_, float pongDuration_, int materialIndex_ = 0, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void ColorPingPong(Renderer renderer, Color32 firstColor, Color32 secondColor, float pingDuration, float pongDuration, int materialIndex = 0, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
 			Dictionary<KeyValuePair<Renderer, int>, TweenHelper_Base> tweenHelpers = null;
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersRenderer_Update;
@@ -673,21 +673,21 @@ namespace HynesSight.Tweening
 					_needsFixedUpdate = true;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 			
-			StopColorTween(renderer_, materialIndex_, updateType_, true);
+			StopColorTween(renderer, materialIndex, updateType, true);
 			
-			tweenHelpers.Add(new KeyValuePair<Renderer, int>(renderer_, materialIndex_), new ColorTweenHelper_Renderer(renderer_, firstColor_, secondColor_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, updateType_ == TweenUpdateType.FixedUpdate, pingCurve_, pongCurve_, materialIndex_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_));
+			tweenHelpers.Add(new KeyValuePair<Renderer, int>(renderer, materialIndex), new ColorTweenHelper_Renderer(renderer, firstColor, secondColor, pingDuration, pongDuration, loopCount, useUnscaledTime, updateType == TweenUpdateType.FixedUpdate, pingCurve, pongCurve, materialIndex, onTweenEndEvent, onPingEndEvent, onPongEndEvent));
 		}
 
 		/// <summary>
 		/// PingPong a Renderer's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorPingPong(Renderer renderer_, Color32 startColor_, Color32 endColor_, PingPongData pingPongData_, int materialIndex_ = 0)
+		public static void ColorPingPong(Renderer renderer, Color32 startColor, Color32 endColor, PingPongData pingPongData, int materialIndex = 0)
 		{
-			ColorPingPong(renderer_, startColor_, endColor_, pingPongData_._pingDuration, pingPongData_._pongDuration, materialIndex_, pingPongData_._loopCount, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			ColorPingPong(renderer, startColor, endColor, pingPongData._pingDuration, pingPongData._pongDuration, materialIndex, pingPongData._loopCount, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
 		/// <summary>
@@ -696,17 +696,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void ColorLerp(Graphic graphic_, Color32 startColor_, Color32 endColor_, float duration_, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void ColorLerp(Graphic graphic, Color32 startColor, Color32 endColor, float duration, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			ColorPingPong(graphic_, startColor_, endColor_, duration_, 0.0f, loopCount_, useUnscaledTime_, updateType_, lerpCurve_, null, onTweenEndEvent_, onLerpEndEvent_, null);
+			ColorPingPong(graphic, startColor, endColor, duration, 0.0f, loopCount, useUnscaledTime, updateType, lerpCurve, null, onTweenEndEvent, onLerpEndEvent, null);
 		}
 
 		/// <summary>
 		/// Lerps a Graphic's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorLerp(Graphic graphic_, Color32 startColor_, Color32 endColor_, LerpData lerpData_)
+		public static void ColorLerp(Graphic graphic, Color32 startColor, Color32 endColor, LerpData lerpData)
 		{
-			ColorLerp(graphic_, startColor_, endColor_, lerpData_._lerpDuration, lerpData_._loopCount, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			ColorLerp(graphic, startColor, endColor, lerpData._lerpDuration, lerpData._loopCount, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -716,10 +716,10 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void ColorPingPong(Graphic graphic_, Color32 startColor_, Color32 endColor_, float pingDuration_, float pongDuration_, int loopCount_ = 1, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void ColorPingPong(Graphic graphic, Color32 startColor, Color32 endColor, float pingDuration, float pongDuration, int loopCount = 1, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
 			Dictionary<Graphic, TweenHelper_Base> tweenHelpers = null;
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersGraphic_Update;
@@ -734,21 +734,21 @@ namespace HynesSight.Tweening
 					_needsFixedUpdate = true;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 			
-			StopColorTween(graphic_, updateType_, true);
+			StopColorTween(graphic, updateType, true);
 
-			tweenHelpers.Add(graphic_, new ColorTweenHelper_Graphic(graphic_, startColor_, endColor_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, updateType_ == TweenUpdateType.FixedUpdate, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_));
+			tweenHelpers.Add(graphic, new ColorTweenHelper_Graphic(graphic, startColor, endColor, pingDuration, pongDuration, loopCount, useUnscaledTime, updateType == TweenUpdateType.FixedUpdate, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent));
 		}
 
 		/// <summary>
 		/// PingPong a Graphic's Color32 value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ColorPingPong(Graphic graphic_, Color32 startColor_, Color32 endColor_, PingPongData pingPongData_)
+		public static void ColorPingPong(Graphic graphic, Color32 startColor, Color32 endColor, PingPongData pingPongData)
 		{
-			ColorPingPong(graphic_, startColor_, endColor_, pingPongData_._pingDuration, pingPongData_._pongDuration, pingPongData_._loopCount, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			ColorPingPong(graphic, startColor, endColor, pingPongData._pingDuration, pingPongData._pongDuration, pingPongData._loopCount, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
 		/// <summary>
@@ -757,17 +757,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void PositionLerp(Transform transform_, Vector3 startPosition_, Vector3 endPosition_, bool isLocalPosition_, float duration_, int loopCount_ = 1, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void PositionLerp(Transform transform, Vector3 startPosition, Vector3 endPosition, bool isLocalPosition, float duration, int loopCount = 1, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			PositionPingPong(transform_, startPosition_, endPosition_, isLocalPosition_, duration_, 0.0f, loopCount_, muteX_, muteY_, muteZ_, useUnscaledTime_, updateType_, lerpCurve_, null, onTweenEndEvent_, onLerpEndEvent_, null);
+			PositionPingPong(transform, startPosition, endPosition, isLocalPosition, duration, 0.0f, loopCount, muteX, muteY, muteZ, useUnscaledTime, updateType, lerpCurve, null, onTweenEndEvent, onLerpEndEvent, null);
 		}
 
 		/// <summary>
 		/// Lerps a Transform's position value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void PositionLerp(Transform transform_, Vector3 startPosition_, Vector3 endPosition_, bool isLocalPosition_, LerpData lerpData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void PositionLerp(Transform transform, Vector3 startPosition, Vector3 endPosition, bool isLocalPosition, LerpData lerpData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			PositionLerp(transform_, startPosition_, endPosition_, isLocalPosition_, lerpData_._lerpDuration, lerpData_._loopCount, muteX_, muteY_, muteZ_, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			PositionLerp(transform, startPosition, endPosition, isLocalPosition, lerpData._lerpDuration, lerpData._loopCount, muteX, muteY, muteZ, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -777,10 +777,10 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void PositionPingPong(Transform transform_, Vector3 startPosition_, Vector3 endPosition_, bool isLocalPosition_, float pingDuration_, float pongDuration_, int loopCount_ = 1, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void PositionPingPong(Transform transform, Vector3 startPosition, Vector3 endPosition, bool isLocalPosition, float pingDuration, float pongDuration, int loopCount = 1, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _positionTweenHelpers_Update;
@@ -795,21 +795,21 @@ namespace HynesSight.Tweening
 					_needsFixedUpdate = true;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 			
-			StopPositionTween(transform_, updateType_, true);
+			StopPositionTween(transform, updateType, true);
 
-			tweenHelpers.Add(transform_, new PositionTweenHelper(transform_, startPosition_, endPosition_, isLocalPosition_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, updateType_ == TweenUpdateType.FixedUpdate, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_));
+			tweenHelpers.Add(transform, new PositionTweenHelper(transform, startPosition, endPosition, isLocalPosition, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, updateType == TweenUpdateType.FixedUpdate, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent));
 		}
 
 		/// <summary>
 		/// PingPongs a Transform's position value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void PositionPingPong(Transform transform_, Vector3 startPosition_, Vector3 endPosition_, bool isLocalPosition_, PingPongData pingPongData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void PositionPingPong(Transform transform, Vector3 startPosition, Vector3 endPosition, bool isLocalPosition, PingPongData pingPongData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			PositionPingPong(transform_, startPosition_, endPosition_, isLocalPosition_, pingPongData_._pingDuration, pingPongData_._pongDuration, pingPongData_._loopCount, muteX_, muteY_, muteZ_, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			PositionPingPong(transform, startPosition, endPosition, isLocalPosition, pingPongData._pingDuration, pingPongData._pongDuration, pingPongData._loopCount, muteX, muteY, muteZ, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
 		/// <summary>
@@ -818,17 +818,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void RotationLerp(Transform transform_, Vector3 startRotation_, Vector3 endRotation_, bool isLocalRotation_, float duration_, int loopCount_ = 1, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void RotationLerp(Transform transform, Vector3 startRotation, Vector3 endRotation, bool isLocalRotation, float duration, int loopCount = 1, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			RotationPingPong(transform_, startRotation_, endRotation_, isLocalRotation_, duration_, 0.0f, loopCount_, muteX_, muteY_, muteZ_, useUnscaledTime_, updateType_, lerpCurve_, null, onTweenEndEvent_, onLerpEndEvent_, null);
+			RotationPingPong(transform, startRotation, endRotation, isLocalRotation, duration, 0.0f, loopCount, muteX, muteY, muteZ, useUnscaledTime, updateType, lerpCurve, null, onTweenEndEvent, onLerpEndEvent, null);
 		}
 
 		/// <summary>
 		/// Lerps a Transform's rotation value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void RotationLerp(Transform transform_, Vector3 startRotation_, Vector3 endRotation_, bool isLocalRotation_, LerpData lerpData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void RotationLerp(Transform transform, Vector3 startRotation, Vector3 endRotation, bool isLocalRotation, LerpData lerpData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			RotationLerp(transform_, startRotation_, endRotation_, isLocalRotation_, lerpData_._lerpDuration, lerpData_._loopCount, muteX_, muteY_, muteZ_, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			RotationLerp(transform, startRotation, endRotation, isLocalRotation, lerpData._lerpDuration, lerpData._loopCount, muteX, muteY, muteZ, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -838,10 +838,10 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void RotationPingPong(Transform transform_, Vector3 startRotation_, Vector3 endRotation_, bool isLocalRotation_, float pingDuration_, float pongDuration_, int loopCount_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void RotationPingPong(Transform transform, Vector3 startRotation, Vector3 endRotation, bool isLocalRotation, float pingDuration, float pongDuration, int loopCount, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _rotationTweenHelpers_Update;
@@ -856,21 +856,21 @@ namespace HynesSight.Tweening
 					_needsFixedUpdate = true;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			StopRotationTween(transform_, updateType_, true);
+			StopRotationTween(transform, updateType, true);
 
-			tweenHelpers.Add(transform_, new RotationTweenHelper(transform_, startRotation_, endRotation_, isLocalRotation_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, updateType_ == TweenUpdateType.FixedUpdate, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_));
+			tweenHelpers.Add(transform, new RotationTweenHelper(transform, startRotation, endRotation, isLocalRotation, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, updateType == TweenUpdateType.FixedUpdate, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent));
 		}
 
 		/// <summary>
 		/// PingPongs a Transform's rotation value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void RotationPingPong(Transform transform_, Vector3 startRotation_, Vector3 endRotation_, bool isLocalRotation_, PingPongData pingPongData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void RotationPingPong(Transform transform, Vector3 startRotation, Vector3 endRotation, bool isLocalRotation, PingPongData pingPongData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			PositionPingPong(transform_, startRotation_, endRotation_, isLocalRotation_, pingPongData_._pingDuration, pingPongData_._pongDuration, pingPongData_._loopCount, muteX_, muteY_, muteZ_, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			PositionPingPong(transform, startRotation, endRotation, isLocalRotation, pingPongData._pingDuration, pingPongData._pongDuration, pingPongData._loopCount, muteX, muteY, muteZ, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
 		/// <summary>
@@ -879,17 +879,17 @@ namespace HynesSight.Tweening
 		/// <param name="loopCount_">Number of times to Lerp will execute. Set to 0 or less to loop infinitely (or until stopped manually).</param>
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onLerpEndEvent_">Functions called when the Lerp ends (in each loop of the Tween).</param>
-		public static void ScaleLerp(Transform transform_, Vector3 startScale_, Vector3 endScale_, float duration_, int loopCount_ = 1, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public static void ScaleLerp(Transform transform, Vector3 startScale, Vector3 endScale, float duration, int loopCount = 1, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			ScalePingPong(transform_, startScale_, endScale_, duration_, 0.0f, loopCount_, muteX_, muteY_, muteZ_, useUnscaledTime_, updateType_, lerpCurve_, null, onTweenEndEvent_, onLerpEndEvent_, null);
+			ScalePingPong(transform, startScale, endScale, duration, 0.0f, loopCount, muteX, muteY, muteZ, useUnscaledTime, updateType, lerpCurve, null, onTweenEndEvent, onLerpEndEvent, null);
 		}
 
 		/// <summary>
 		/// Lerps a Transform's scale value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ScaleLerp(Transform transform_, Vector3 startScale_, Vector3 endScale_, LerpData lerpData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void ScaleLerp(Transform transform, Vector3 startScale, Vector3 endScale, LerpData lerpData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			ScaleLerp(transform_, startScale_, endScale_, lerpData_._lerpDuration, lerpData_._loopCount, muteX_, muteY_, muteZ_, lerpData_._useUnscaledTime, lerpData_._updateType, lerpData_._lerpCurve, lerpData_._onTweenEndEvent, lerpData_._onLerpEndEvent);
+			ScaleLerp(transform, startScale, endScale, lerpData._lerpDuration, lerpData._loopCount, muteX, muteY, muteZ, lerpData._useUnscaledTime, lerpData._updateType, lerpData._lerpCurve, lerpData._onTweenEndEvent, lerpData._onLerpEndEvent);
 		}
 
 		/// <summary>
@@ -899,10 +899,10 @@ namespace HynesSight.Tweening
 		/// <param name="onTweenEndEvent_">Functions called when the Tween stops (including when stopped manually).</param>
 		/// <param name="onPingEndEvent_">Functions called when the Ping half of the Tween ends(in each loop of the Tween).</param>
 		/// <param name="onPongEndEvent_">Functions called when the Pong half of the Tween ends (in each loop of the Tween).</param>
-		public static void ScalePingPong(Transform transform_, Vector3 startScale_, Vector3 endScale_, float pingDuration_, float pongDuration_, int loopCount_ = 1, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public static void ScalePingPong(Transform transform, Vector3 startScale, Vector3 endScale, float pingDuration, float pongDuration, int loopCount = 1, bool muteX = false, bool muteY = false, bool muteZ = false, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _scaleTweenHelpers_Update;
@@ -917,33 +917,33 @@ namespace HynesSight.Tweening
 					_needsFixedUpdate = true;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 			
-			StopScaleTween(transform_, updateType_, true);
+			StopScaleTween(transform, updateType, true);
 
-			tweenHelpers.Add(transform_, new ScaleTweenHelper(transform_, startScale_, endScale_, muteX_, muteY_, muteZ_, pingDuration_, pongDuration_, loopCount_, useUnscaledTime_, updateType_ == TweenUpdateType.FixedUpdate, pingCurve_, pongCurve_, onTweenEndEvent_, onPingEndEvent_, onPongEndEvent_));
+			tweenHelpers.Add(transform, new ScaleTweenHelper(transform, startScale, endScale, muteX, muteY, muteZ, pingDuration, pongDuration, loopCount, useUnscaledTime, updateType == TweenUpdateType.FixedUpdate, pingCurve, pongCurve, onTweenEndEvent, onPingEndEvent, onPongEndEvent));
 		}
 
 		/// <summary>
 		/// PingPongs a Transform's scale value, with optional looping, callbacks and AnimationCurves.
 		/// </summary>
-		public static void ScalePingPong(Transform transform_, Vector3 startScale_, Vector3 endScale_, PingPongData pingPongData_, bool muteX_ = false, bool muteY_ = false, bool muteZ_ = false)
+		public static void ScalePingPong(Transform transform, Vector3 startScale, Vector3 endScale, PingPongData pingPongData, bool muteX = false, bool muteY = false, bool muteZ = false)
 		{
-			ScalePingPong(transform_, startScale_, endScale_, pingPongData_._pingDuration, pingPongData_._pongDuration, pingPongData_._loopCount, muteX_, muteY_, muteZ_, pingPongData_._useUnscaledTime, pingPongData_._updateType, pingPongData_._pingCurve, pingPongData_._pongCurve, pingPongData_._onTweenEndEvent, pingPongData_._onPingEndEvent, pingPongData_._onPongEndEvent);
+			ScalePingPong(transform, startScale, endScale, pingPongData._pingDuration, pingPongData._pongDuration, pingPongData._loopCount, muteX, muteY, muteZ, pingPongData._useUnscaledTime, pingPongData._updateType, pingPongData._pingCurve, pingPongData._pongCurve, pingPongData._onTweenEndEvent, pingPongData._onPingEndEvent, pingPongData._onPongEndEvent);
 		}
 
-		public static void ResumeColorTween(SpriteRenderer spriteRenderer_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumeColorTween(SpriteRenderer spriteRenderer, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			ResumeColorTween(spriteRenderer_, updateType_);
+			ResumeColorTween(spriteRenderer, updateType);
 		}
 
-		public static void ResumeColorTween(Renderer renderer_, int materialIndex_ = 0, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumeColorTween(Renderer renderer, int materialIndex = 0, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<KeyValuePair<Renderer, int>, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersRenderer_Update;
@@ -955,22 +955,22 @@ namespace HynesSight.Tweening
 					tweenHelpers = _colorTweenHelpersRenderer_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer_, materialIndex_);
+			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer, materialIndex);
 			if (tweenHelpers.ContainsKey(rendererMaterial))
 			{
 				tweenHelpers[rendererMaterial].TogglePaused(false);
 			}
 		}
 
-		public static void ResumeColorTween(Graphic graphic_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumeColorTween(Graphic graphic, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Graphic, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersGraphic_Update;
@@ -982,21 +982,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _colorTweenHelpersGraphic_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(graphic_))
+			if (tweenHelpers.ContainsKey(graphic))
 			{
-				tweenHelpers[graphic_].TogglePaused(false);
+				tweenHelpers[graphic].TogglePaused(false);
 			}
 		}
 
-		public static void ResumePositionTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumePositionTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _positionTweenHelpers_Update;
@@ -1008,21 +1008,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _positionTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(false);
+				tweenHelpers[transform].TogglePaused(false);
 			}
 		}
 
-		public static void ResumeRotationTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumeRotationTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _rotationTweenHelpers_Update;
@@ -1034,21 +1034,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _rotationTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(false);
+				tweenHelpers[transform].TogglePaused(false);
 			}
 		}
 
-		public static void ResumeScaleTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void ResumeScaleTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _scaleTweenHelpers_Update;
@@ -1060,26 +1060,26 @@ namespace HynesSight.Tweening
 					tweenHelpers = _scaleTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(false);
+				tweenHelpers[transform].TogglePaused(false);
 			}
 		}
 
-		public static void PauseColorTween(SpriteRenderer spriteRenderer_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PauseColorTween(SpriteRenderer spriteRenderer, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			PauseColorTween(spriteRenderer_, updateType_);
+			PauseColorTween(spriteRenderer, updateType);
 		}
 
-		public static void PauseColorTween(Renderer renderer_, int materialIndex_ = 0, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PauseColorTween(Renderer renderer, int materialIndex = 0, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<KeyValuePair<Renderer, int>, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersRenderer_Update;
@@ -1091,22 +1091,22 @@ namespace HynesSight.Tweening
 					tweenHelpers = _colorTweenHelpersRenderer_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer_, materialIndex_);
+			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer, materialIndex);
 			if (tweenHelpers.ContainsKey(rendererMaterial))
 			{
 				tweenHelpers[rendererMaterial].TogglePaused(true);
 			}
 		}
 
-		public static void PauseColorTween(Graphic graphic_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PauseColorTween(Graphic graphic, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Graphic, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersGraphic_Update;
@@ -1118,21 +1118,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _colorTweenHelpersGraphic_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(graphic_))
+			if (tweenHelpers.ContainsKey(graphic))
 			{
-				tweenHelpers[graphic_].TogglePaused(true);
+				tweenHelpers[graphic].TogglePaused(true);
 			}
 		}
 
-		public static void PausePositionTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PausePositionTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _positionTweenHelpers_Update;
@@ -1144,21 +1144,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _positionTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(true);
+				tweenHelpers[transform].TogglePaused(true);
 			}
 		}
 
-		public static void PauseRotationTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PauseRotationTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _rotationTweenHelpers_Update;
@@ -1170,21 +1170,21 @@ namespace HynesSight.Tweening
 					tweenHelpers = _rotationTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(true);
+				tweenHelpers[transform].TogglePaused(true);
 			}
 		}
 
-		public static void PauseScaleTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static void PauseScaleTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _scaleTweenHelpers_Update;
@@ -1196,27 +1196,27 @@ namespace HynesSight.Tweening
 					tweenHelpers = _scaleTweenHelpers_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].TogglePaused(true);
+				tweenHelpers[transform].TogglePaused(true);
 			}
 		}
 
-		public static void StopColorTween(SpriteRenderer spriteRenderer_, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopColorTween(SpriteRenderer spriteRenderer, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
-			StopColorTween(spriteRenderer_, 0, updateType_, cleanUpImmediately_);
+			StopColorTween(spriteRenderer, 0, updateType, cleanUpImmediately);
 		}
 
-		public static void StopColorTween(Renderer renderer_, int materialIndex_ = 0, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopColorTween(Renderer renderer, int materialIndex = 0, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
 			Dictionary<KeyValuePair<Renderer, int>, TweenHelper_Base> tweenHelpers = null;
 			List<KeyValuePair<Renderer, int>> tweensToRemove = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersRenderer_Update;
@@ -1231,29 +1231,29 @@ namespace HynesSight.Tweening
 					tweensToRemove = _colorTweensToRemoveRenderer_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer_, materialIndex_);
+			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer, materialIndex);
 			if (tweenHelpers.ContainsKey(rendererMaterial))
 			{
 				tweenHelpers[rendererMaterial].OnFinished();
 				tweensToRemove.Add(rendererMaterial);
 
-				if (cleanUpImmediately_)
+				if (cleanUpImmediately)
 				{
 					CleanUpFinishedTweens();
 				}
 			}
 		}
 
-		public static void StopColorTween(Graphic graphic_, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopColorTween(Graphic graphic, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
 			Dictionary<Graphic, TweenHelper_Base> tweenHelpers = null;
 			List<Graphic> tweensToRemove = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _colorTweenHelpersGraphic_Update;
@@ -1268,28 +1268,28 @@ namespace HynesSight.Tweening
 					tweensToRemove = _colorTweensToRemoveGraphic_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(graphic_))
+			if (tweenHelpers.ContainsKey(graphic))
 			{
-				tweenHelpers[graphic_].OnFinished();
-				tweensToRemove.Add(graphic_);
+				tweenHelpers[graphic].OnFinished();
+				tweensToRemove.Add(graphic);
 
-				if (cleanUpImmediately_)
+				if (cleanUpImmediately)
 				{
 					CleanUpFinishedTweens();
 				}
 			}
 		}
 
-		public static void StopPositionTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopPositionTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 			List<Transform> tweensToRemove = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _positionTweenHelpers_Update;
@@ -1304,28 +1304,28 @@ namespace HynesSight.Tweening
 					tweensToRemove = _positionTweensToRemove_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].OnFinished();
-				tweensToRemove.Add(transform_);
+				tweenHelpers[transform].OnFinished();
+				tweensToRemove.Add(transform);
 
-				if (cleanUpImmediately_)
+				if (cleanUpImmediately)
 				{
 					CleanUpFinishedTweens();
 				}
 			}
 		}
 
-		public static void StopRotationTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopRotationTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 			List<Transform> tweensToRemove = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _rotationTweenHelpers_Update;
@@ -1340,28 +1340,28 @@ namespace HynesSight.Tweening
 					tweensToRemove = _rotationTweensToRemove_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].OnFinished();
-				tweensToRemove.Add(transform_);
+				tweenHelpers[transform].OnFinished();
+				tweensToRemove.Add(transform);
 
-				if (cleanUpImmediately_)
+				if (cleanUpImmediately)
 				{
 					CleanUpFinishedTweens();
 				}
 			}
 		}
 
-		public static void StopScaleTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update, bool cleanUpImmediately_ = false)
+		public static void StopScaleTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update, bool cleanUpImmediately = false)
 		{
 			Dictionary<Transform, TweenHelper_Base> tweenHelpers = null;
 			List<Transform> tweensToRemove = null;
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					tweenHelpers = _scaleTweenHelpers_Update;
@@ -1376,23 +1376,23 @@ namespace HynesSight.Tweening
 					tweensToRemove = _scaleTweensToRemove_FixedUpdate;
 					break;
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					break;
 			}
 
-			if (tweenHelpers.ContainsKey(transform_))
+			if (tweenHelpers.ContainsKey(transform))
 			{
-				tweenHelpers[transform_].OnFinished();
-				tweensToRemove.Add(transform_);
+				tweenHelpers[transform].OnFinished();
+				tweensToRemove.Add(transform);
 
-				if (cleanUpImmediately_)
+				if (cleanUpImmediately)
 				{
 					CleanUpFinishedTweens();
 				}
 			}
 		}
 
-		public static void StopAllTweens(bool cleanUpImmediately_ = false)
+		public static void StopAllTweens(bool cleanUpImmediately = false)
 		{
 			if (_needsUpdate)
 			{
@@ -1478,22 +1478,22 @@ namespace HynesSight.Tweening
 				}
 			}
 
-			if (cleanUpImmediately_)
+			if (cleanUpImmediately)
 			{
 				CleanUpFinishedTweens();
 			}
 		}
 
-		public static bool IsPlayingColorTween(SpriteRenderer spriteRenderer_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingColorTween(SpriteRenderer spriteRenderer, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			return IsPlayingColorTween(spriteRenderer_, 0, updateType_);
+			return IsPlayingColorTween(spriteRenderer, 0, updateType);
 		}
 
-		public static bool IsPlayingColorTween(Renderer renderer_, int materialIndex_ = 0, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingColorTween(Renderer renderer, int materialIndex = 0, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer_, materialIndex_);
+			KeyValuePair<Renderer, int> rendererMaterial = new KeyValuePair<Renderer, int>(renderer, materialIndex);
 
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
 					return _colorTweenHelpersRenderer_Update.ContainsKey(rendererMaterial);
@@ -1502,71 +1502,71 @@ namespace HynesSight.Tweening
 				case TweenUpdateType.FixedUpdate:
 					return _colorTweenHelpersRenderer_FixedUpdate.ContainsKey(rendererMaterial);
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					return false;
 			}
 		}
 
-		public static bool IsPlayingColorTween(Graphic graphic_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingColorTween(Graphic graphic, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
-					return _colorTweenHelpersGraphic_Update.ContainsKey(graphic_);
+					return _colorTweenHelpersGraphic_Update.ContainsKey(graphic);
 				case TweenUpdateType.LateUpdate:
-					return _colorTweenHelpersGraphic_LateUpdate.ContainsKey(graphic_);
+					return _colorTweenHelpersGraphic_LateUpdate.ContainsKey(graphic);
 				case TweenUpdateType.FixedUpdate:
-					return _colorTweenHelpersGraphic_FixedUpdate.ContainsKey(graphic_);
+					return _colorTweenHelpersGraphic_FixedUpdate.ContainsKey(graphic);
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					return false;
 			}
 		}
 
-		public static bool IsPlayingPositionTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingPositionTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
-					return _positionTweenHelpers_Update.ContainsKey(transform_);
+					return _positionTweenHelpers_Update.ContainsKey(transform);
 				case TweenUpdateType.LateUpdate:
-					return _positionTweenHelpers_LateUpdate.ContainsKey(transform_);
+					return _positionTweenHelpers_LateUpdate.ContainsKey(transform);
 				case TweenUpdateType.FixedUpdate:
-					return _positionTweenHelpers_FixedUpdate.ContainsKey(transform_);
+					return _positionTweenHelpers_FixedUpdate.ContainsKey(transform);
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					return false;
 			}
 		}
 
-		public static bool IsPlayingRotationTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingRotationTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
-					return _rotationTweenHelpers_Update.ContainsKey(transform_);
+					return _rotationTweenHelpers_Update.ContainsKey(transform);
 				case TweenUpdateType.LateUpdate:
-					return _rotationTweenHelpers_LateUpdate.ContainsKey(transform_);
+					return _rotationTweenHelpers_LateUpdate.ContainsKey(transform);
 				case TweenUpdateType.FixedUpdate:
-					return _rotationTweenHelpers_FixedUpdate.ContainsKey(transform_);
+					return _rotationTweenHelpers_FixedUpdate.ContainsKey(transform);
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					return false;
 			}
 		}
 
-		public static bool IsPlayingScaleTween(Transform transform_, TweenUpdateType updateType_ = TweenUpdateType.Update)
+		public static bool IsPlayingScaleTween(Transform transform, TweenUpdateType updateType = TweenUpdateType.Update)
 		{
-			switch (updateType_)
+			switch (updateType)
 			{
 				case TweenUpdateType.Update:
-					return _scaleTweenHelpers_Update.ContainsKey(transform_);
+					return _scaleTweenHelpers_Update.ContainsKey(transform);
 				case TweenUpdateType.LateUpdate:
-					return _scaleTweenHelpers_LateUpdate.ContainsKey(transform_);
+					return _scaleTweenHelpers_LateUpdate.ContainsKey(transform);
 				case TweenUpdateType.FixedUpdate:
-					return _scaleTweenHelpers_FixedUpdate.ContainsKey(transform_);
+					return _scaleTweenHelpers_FixedUpdate.ContainsKey(transform);
 				default:
-					DebugUtility.PrintSwitchDefaultError();
+					DebugHelpers.PrintSwitchDefaultError();
 					return false;
 			}
 		}
@@ -1597,16 +1597,16 @@ namespace HynesSight.Tweening
 		public UnityEvent _onTweenEndEvent,
 						  _onLerpEndEvent;
 
-		public LerpData(float lerpDuration_ = 0.0f, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, int loopCount_ = 1,
-						 AnimationCurve lerpCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onLerpEndEvent_ = null)
+		public LerpData(float lerpDuration = 0.0f, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, int loopCount = 1,
+						 AnimationCurve lerpCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onLerpEndEvent = null)
 		{
-			_lerpDuration = lerpDuration_;
-			_useUnscaledTime = useUnscaledTime_;
-			_updateType = updateType_;
-			_loopCount = loopCount_;
-			_lerpCurve = lerpCurve_ == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : lerpCurve_;
-			_onTweenEndEvent = onTweenEndEvent_;
-			_onLerpEndEvent = onLerpEndEvent_;
+			_lerpDuration = lerpDuration;
+			_useUnscaledTime = useUnscaledTime;
+			_updateType = updateType;
+			_loopCount = loopCount;
+			_lerpCurve = lerpCurve == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : lerpCurve;
+			_onTweenEndEvent = onTweenEndEvent;
+			_onLerpEndEvent = onLerpEndEvent;
 		}
 	}
 
@@ -1638,19 +1638,19 @@ namespace HynesSight.Tweening
 						  _onPingEndEvent,
 						  _onPongEndEvent;
 
-		public PingPongData(float pingDuration_ = 0.0f, float pongDuration_ = 0.0f, bool useUnscaledTime_ = false, TweenUpdateType updateType_ = TweenUpdateType.Update, int loopCount_ = 1,
-							 AnimationCurve pingCurve_ = null, AnimationCurve pongCurve_ = null, UnityEvent onTweenEndEvent_ = null, UnityEvent onPingEndEvent_ = null, UnityEvent onPongEndEvent_ = null)
+		public PingPongData(float pingDuration = 0.0f, float pongDuration = 0.0f, bool useUnscaledTime = false, TweenUpdateType updateType = TweenUpdateType.Update, int loopCount = 1,
+							 AnimationCurve pingCurve = null, AnimationCurve pongCurve = null, UnityEvent onTweenEndEvent = null, UnityEvent onPingEndEvent = null, UnityEvent onPongEndEvent = null)
 		{
-			_pingDuration = pingDuration_;
-			_pongDuration = pongDuration_;
-			_useUnscaledTime = useUnscaledTime_;
-			_updateType = updateType_;
-			_loopCount = loopCount_;
-			_pingCurve = pingCurve_ == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : pingCurve_;
-			_pongCurve = pongCurve_ == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : pongCurve_;
-			_onTweenEndEvent = onTweenEndEvent_;
-			_onPingEndEvent = onPingEndEvent_;
-			_onPongEndEvent = onPongEndEvent_;
+			_pingDuration = pingDuration;
+			_pongDuration = pongDuration;
+			_useUnscaledTime = useUnscaledTime;
+			_updateType = updateType;
+			_loopCount = loopCount;
+			_pingCurve = pingCurve == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : pingCurve;
+			_pongCurve = pongCurve == null ? AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f) : pongCurve;
+			_onTweenEndEvent = onTweenEndEvent;
+			_onPingEndEvent = onPingEndEvent;
+			_onPongEndEvent = onPongEndEvent;
 		}
 	}
 }

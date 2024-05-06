@@ -23,40 +23,40 @@ namespace HynesSight
 
 		private static Dictionary<string, List<DynamicParamsDelegate>> _subscribedEvents = new Dictionary<string, List<DynamicParamsDelegate>>();
 		
-		public static void Subscribe(string channelName_, DynamicParamsDelegate event_)
+		public static void Subscribe(string channelName, DynamicParamsDelegate inEvent)
 		{
-			if (!_subscribedEvents.ContainsKey(channelName_))
+			if (!_subscribedEvents.ContainsKey(channelName))
 			{
-				_subscribedEvents.Add(channelName_, new List<DynamicParamsDelegate>(1));
+				_subscribedEvents.Add(channelName, new List<DynamicParamsDelegate>(1));
 			}
 
-			_subscribedEvents[channelName_].Add(event_);
+			_subscribedEvents[channelName].Add(inEvent);
 		}
 
-		public static void Unsubscribe(string channelName_, DynamicParamsDelegate event_)
+		public static void Unsubscribe(string channelName, DynamicParamsDelegate inEvent)
 		{
-			if (!_subscribedEvents.ContainsKey(channelName_) || !_subscribedEvents[channelName_].Contains(event_))
+			if (!_subscribedEvents.ContainsKey(channelName) || !_subscribedEvents[channelName].Contains(inEvent))
 			{
-				Debug.LogError("Trying to unsubscribe an event that is not subscribed. Channel: " + channelName_ + ". Event: " + event_.Method + ".");
+				Debug.LogError("Trying to unsubscribe an event that is not subscribed. Channel: " + channelName + ". Event: " + inEvent.Method + ".");
 				return;
 			}
 
-			_subscribedEvents[channelName_].Remove(event_);
+			_subscribedEvents[channelName].Remove(inEvent);
 		}
 
-		public static void Dispatch(string channelName_)
+		public static void Dispatch(string channelName)
 		{
-			if (!_subscribedEvents.ContainsKey(channelName_))
+			if (!_subscribedEvents.ContainsKey(channelName))
 			{
-				_subscribedEvents.Add(channelName_, new List<DynamicParamsDelegate>(0));
+				_subscribedEvents.Add(channelName, new List<DynamicParamsDelegate>(0));
 				return;
 			}
 
-			if (_subscribedEvents[channelName_].Count > 0)
+			if (_subscribedEvents[channelName].Count > 0)
 			{
-				for (int n = _subscribedEvents[channelName_].Count - 1; n > 1; n--)
+				for (int n = _subscribedEvents[channelName].Count - 1; n > 1; n--)
 				{
-					_subscribedEvents[channelName_][n].Invoke();
+					_subscribedEvents[channelName][n].Invoke();
 				}
 			}
 		}

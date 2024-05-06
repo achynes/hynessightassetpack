@@ -48,7 +48,7 @@ namespace HynesSight
             }
 	    }
 
-		private static T CreateInstance(string gameObjectName, bool dontDestroyOnLoad_)
+		private static T CreateInstance(string gameObjectName, bool dontDestroyOnLoad)
 		{
 			if (null != Instance)
 			{
@@ -59,7 +59,7 @@ namespace HynesSight
 			GameObject holderObject = new GameObject(gameObjectName);
 
 			T singletonComponent = holderObject.AddComponent<T>();
-			singletonComponent._dontDestroyOnLoad = dontDestroyOnLoad_;
+			singletonComponent._dontDestroyOnLoad = dontDestroyOnLoad;
 
 			return singletonComponent;
 		}
