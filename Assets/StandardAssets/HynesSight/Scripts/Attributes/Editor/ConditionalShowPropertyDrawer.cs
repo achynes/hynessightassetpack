@@ -7,30 +7,30 @@ namespace HynesSightEditor.Attributes
 	[CustomPropertyDrawer(typeof(ConditionalShowAttribute))]
 	public class ConditionalShowPropertyDrawer : PropertyDrawer
 	{
-		public override void OnGUI(Rect position_, SerializedProperty property_, GUIContent label_)
+		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
 			ConditionalShowAttribute showAttribute = (ConditionalShowAttribute)attribute;
-			bool shouldShow = GetConditionalShowResult(showAttribute, property_);
+			bool shouldShow = GetConditionalShowResult(showAttribute, property);
 			
 			bool wasEnabled = GUI.enabled;
 			GUI.enabled = shouldShow;
 
 			if (shouldShow)
 			{
-				EditorGUI.PropertyField(position_, property_, label_, true);
+				EditorGUI.PropertyField(position, property, label, true);
 			}
 
 			GUI.enabled = wasEnabled;
 		}
 
-		public override float GetPropertyHeight(SerializedProperty property_, GUIContent label_)
+		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
 			ConditionalShowAttribute showAttribute = (ConditionalShowAttribute)attribute;
-			bool shouldShow = GetConditionalShowResult(showAttribute, property_);
+			bool shouldShow = GetConditionalShowResult(showAttribute, property);
 
 			if (shouldShow)
 			{
-				return EditorGUI.GetPropertyHeight(property_, label_);
+				return EditorGUI.GetPropertyHeight(property, label);
 			}
 			else
 			{
@@ -38,20 +38,20 @@ namespace HynesSightEditor.Attributes
 			}
 		}
 
-		private bool GetConditionalShowResult(ConditionalShowAttribute showAttribute_, SerializedProperty property_)
+		private bool GetConditionalShowResult(ConditionalShowAttribute showAttribute, SerializedProperty property)
 		{
-			ConditionType condition = showAttribute_._condition;
+			ConditionType condition = showAttribute._condition;
 
 			// Get the property path of the property we want to apply the attribute to.
 			// Then change it to the path to of fields being compared.
-			string propertyPath = property_.propertyPath,
-				   fieldPath = propertyPath.Replace(property_.name, showAttribute_._field),
-				   relativeFieldPath = propertyPath.Replace(property_.name, showAttribute_._relativeField);
+			string propertyPath = property.propertyPath,
+				   fieldPath = propertyPath.Replace(property.name, showAttribute._field),
+				   relativeFieldPath = propertyPath.Replace(property.name, showAttribute._relativeField);
 
-			SerializedProperty field = property_.serializedObject.FindProperty(fieldPath),
-							   relativeField = property_.serializedObject.FindProperty(relativeFieldPath);
+			SerializedProperty field = property.serializedObject.FindProperty(fieldPath),
+							   relativeField = property.serializedObject.FindProperty(relativeFieldPath);
 
-			object relativeValue = showAttribute_._relativeValue;
+			object relativeValue = showAttribute._relativeValue;
 
 			switch (field.propertyType)
 			{

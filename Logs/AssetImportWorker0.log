@@ -1,0 +1,530 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.26f1 (ec6cd8118806) revision 15494360'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 12152 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/Andrew/Work/Unity Projects/HynesSight Asset Pack
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61009
+Successfully changed project path to: D:/Andrew/Work/Unity Projects/HynesSight Asset Pack
+D:/Andrew/Work/Unity Projects/HynesSight Asset Pack
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [360] Host "[IP] 192.168.1.20 [Port] 0 [Flags] 2 [Guid] 639095300 [EditorId] 639095300 [Version] 1048832 [Id] WindowsEditor(7,AndrewsLaptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [360] Host "[IP] 192.168.1.20 [Port] 0 [Flags] 2 [Guid] 639095300 [EditorId] 639095300 [Version] 1048832 [Id] WindowsEditor(7,AndrewsLaptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 3 workers.
+Refreshing native plugins compatible for Editor in 23.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.26f1 (ec6cd8118806)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Andrew/Work/Unity Projects/HynesSight Asset Pack/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 940MX (ID=0x179c)
+    Vendor:   NVIDIA
+    VRAM:     2019 MB
+    Driver:   23.21.13.8857
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56968
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.026610 seconds.
+- Loaded All Assemblies, in  0.985 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 677 ms
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.872 seconds
+Domain Reload Profiling: 2854ms
+	BeginReloadAssembly (307ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (80ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (142ms)
+	LoadAllAssembliesAndSetupDomain (427ms)
+		LoadAssemblies (305ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (421ms)
+			TypeCache.Refresh (419ms)
+				TypeCache.ScanAssembly (391ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (1873ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1605ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1206ms)
+			SetLoadedEditorAssemblies (10ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (6ms)
+			ProcessInitializeOnLoadAttributes (274ms)
+			ProcessInitializeOnLoadMethodAttributes (110ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.276 seconds
+Refreshing native plugins compatible for Editor in 10.33 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.153 seconds
+Domain Reload Profiling: 3425ms
+	BeginReloadAssembly (305ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (82ms)
+	LoadAllAssembliesAndSetupDomain (792ms)
+		LoadAssemblies (668ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (305ms)
+			TypeCache.Refresh (254ms)
+				TypeCache.ScanAssembly (216ms)
+			ScanForSourceGeneratedMonoScriptInfo (42ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (2154ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1785ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (56ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (213ms)
+			ProcessInitializeOnLoadAttributes (1161ms)
+			ProcessInitializeOnLoadMethodAttributes (331ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (15ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 12.20 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2539 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 64 unused Assets / (71.4 KB). Loaded Objects now: 2982.
+Memory consumption went from 112.2 MB to 112.1 MB.
+Total: 25.513400 ms (FindLiveObjects: 0.335200 ms CreateObjectMapping: 0.290500 ms MarkObjects: 24.388300 ms  DeleteObjects: 0.497200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1827051.382997 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/SingletonBehaviour.cs
+  artifactKey: Guid(12e88719c1a0a4afc993a3ef8640c786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/SingletonBehaviour.cs using Guid(12e88719c1a0a4afc993a3ef8640c786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b54de446b6bebc015ca0fa4a9a08c71') in 0.003934 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts
+  artifactKey: Guid(72784826d394e441197b4ead39c57c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts using Guid(72784826d394e441197b4ead39c57c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5c17ee978d0c7709f014632b3ce5a8c') in 0.000885 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 11.904306 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/EventBus.cs
+  artifactKey: Guid(748a39d7a2697844f932311fd4396db7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/EventBus.cs using Guid(748a39d7a2697844f932311fd4396db7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcc18ec2e618bb4db3dbed0751ce7483') in 0.000521 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 39.572391 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Echoer.cs
+  artifactKey: Guid(7ad243fa93d68e949980d0c05e9cd702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Echoer.cs using Guid(7ad243fa93d68e949980d0c05e9cd702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1ed0dec0536f7273555bc8fda7f0d9b') in 0.000626 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 16.945527 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/DebugUtility.cs
+  artifactKey: Guid(e27ae16540ab0b24eb336d32bd25e301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/DebugUtility.cs using Guid(e27ae16540ab0b24eb336d32bd25e301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0fe297737d738dd3303be15cdd01e26') in 0.000481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 6.708091 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Tweener
+  artifactKey: Guid(c06b396b4c0fb6741b7628a259bb1bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Tweener using Guid(c06b396b4c0fb6741b7628a259bb1bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a032ae76b331c238125e5cf8133817a') in 0.000478 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.914633 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Tweener/PositionTweenerComponent.cs
+  artifactKey: Guid(419595f210c9b3e4780375fd77bd5f19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Tweener/PositionTweenerComponent.cs using Guid(419595f210c9b3e4780375fd77bd5f19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ae894e0915fbe4a9f902a32db1fec67') in 0.000495 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.683510 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Tweener/Editor
+  artifactKey: Guid(c6fd1867ad563784bb047d7c05eda4ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Tweener/Editor using Guid(c6fd1867ad563784bb047d7c05eda4ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fe4bfce18ab5d629dda12be13aa0a7f') in 0.000599 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.671810 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/StateMachine
+  artifactKey: Guid(f59011f11763b374b83ffc68282ffe57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/StateMachine using Guid(f59011f11763b374b83ffc68282ffe57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b928fe72de8f41dece2d6d61531fd1fe') in 0.000596 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.793414 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/StateMachine/StateMachine.cs
+  artifactKey: Guid(3e47dc15d847c9b47a70ff44116123b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/StateMachine/StateMachine.cs using Guid(3e47dc15d847c9b47a70ff44116123b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed33a1da94c1e1c586af96d367674b7a') in 0.000745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.486518 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/StateMachine/State_Base.cs
+  artifactKey: Guid(b0cb7c24d5310044cb9cd7ba94ef2e78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/StateMachine/State_Base.cs using Guid(b0cb7c24d5310044cb9cd7ba94ef2e78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '717ee4e7baf5a1f7e5b1f7ae1d9830fc') in 0.000581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 54.639079 seconds.
+  path: Assets/StandardAssets/HynesSight
+  artifactKey: Guid(3662007e72d4945f19a14e09aab22a1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight using Guid(3662007e72d4945f19a14e09aab22a1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bb953928d55c6b1124df79c18b09dc8') in 0.000937 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 6.312484 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ObjectPooling.cs
+  artifactKey: Guid(5de4ae28eefe45444b2d4d4ca47ef1b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ObjectPooling.cs using Guid(5de4ae28eefe45444b2d4d4ca47ef1b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3d075a49ad17d35bab82f30c6417608') in 0.000510 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 26.331304 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/SharedDefinitions.cs
+  artifactKey: Guid(66948a57995811f4da5818bd2b838064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/SharedDefinitions.cs using Guid(66948a57995811f4da5818bd2b838064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77610f0c50febe3b05f9a5c5750f26a7') in 0.001021 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 12.901108 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor
+  artifactKey: Guid(59d554a64a9c44813a2316446c356079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor using Guid(59d554a64a9c44813a2316446c356079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2c85291024796f6d9871c50792757a9') in 0.000515 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.125410 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/BatchTransformTool.cs
+  artifactKey: Guid(351a1680d3e524c89827358f381c974a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/BatchTransformTool.cs using Guid(351a1680d3e524c89827358f381c974a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edabd04c62fbe079e12634356ca3b87a') in 0.000576 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 10.279688 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/SortUtility.cs
+  artifactKey: Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/SortUtility.cs using Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41ec035fa80d71d40b2010760900eb3a') in 0.000493 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.572868 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/BatchRenameTool.cs
+  artifactKey: Guid(ebf7dfa92353b4ec19d54b814ad4a665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/BatchRenameTool.cs using Guid(ebf7dfa92353b4ec19d54b814ad4a665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77bf1cc2a11a105332e34356c9c64a1e') in 0.000610 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 104.592322 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1218de16b5ba967dde3e12ad269d9f72') in 0.000815 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 16.217420 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1809f99c781b26109d00900ed3fa57d3') in 0.076494 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.148986 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/TransformUtils.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1809f99c781b26109d00900ed3fa57d3') in 0.001656 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 13.763178 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/TransformUtils1.cs
+  artifactKey: Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/TransformUtils1.cs using Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c772496016ec00e30e591376be12cb4') in 0.003469 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.359316 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/GameObjectUtils.cs
+  artifactKey: Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/GameObjectUtils.cs using Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39f38560249a8386fca4f2f4bd13c505') in 0.002034 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 8.990014 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/GameObjectUtils.cs
+  artifactKey: Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/GameObjectUtils.cs using Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28fbe088728162f2da52bc3c1aa91cb7') in 0.000731 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 12.088508 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries
+  artifactKey: Guid(c0c358f895f141143a95bd6a14f3238f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries using Guid(c0c358f895f141143a95bd6a14f3238f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a8e7dad3eaccce4ee1ff624b6c2f207') in 0.001365 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 20.789018 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/GameObjectExtensions.cs
+  artifactKey: Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/GameObjectExtensions.cs using Guid(02284898af58b23419ec7740f0f51785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18a7366df889614ff10d8c7aca0e9b26') in 0.001101 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 6.056496 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '698bc681b2b382b9e24933df7d8da51b') in 0.001362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 19.237637 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '762ebebc8daf51a84297fbfc3df2925d') in 0.000597 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 49.479049 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs
+  artifactKey: Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/TransformExtensions.cs using Guid(762f7b6d7a2d9e7478ef1630bc81ef9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba96d4a7cb880a1b7706b30381643f13') in 0.001130 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 677.809230 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe93a4a4b763cda11dee92ed10683c78') in 0.002822 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 85.845545 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbee9f1c4017285ba411d64c759fa145') in 0.001140 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 17.864429 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b920fe447c2e718422f0404ee3aaca7') in 0.000721 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 86.990137 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2b0f7c16f66a01d970828bfb90a7dec') in 0.000692 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.377021 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c019af7845a8d1a10ba2471bc62855e6') in 0.001349 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 47.412173 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b489faa1da3b62047d84ba386cabd59') in 0.000600 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.974076 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs
+  artifactKey: Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ExtensionLibraries/ListExtensions.cs using Guid(67fa5f538323dc343a2141e319e97444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7de14647083d49329f790d43c430c1e') in 0.001354 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1226.995006 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/BatchRenameTool.cs
+  artifactKey: Guid(ebf7dfa92353b4ec19d54b814ad4a665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/BatchRenameTool.cs using Guid(ebf7dfa92353b4ec19d54b814ad4a665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5edbc59aebd12486c4082110664f9298') in 0.000964 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.558818 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/BatchTransformTool.cs
+  artifactKey: Guid(351a1680d3e524c89827358f381c974a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/BatchTransformTool.cs using Guid(351a1680d3e524c89827358f381c974a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0662f290a8f6e170ee11e1eb9742cfdc') in 0.000487 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.032343 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/BatchGameObjectTools.cs
+  artifactKey: Guid(12fae5ddf571a274b9d00aa5dc661956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/BatchGameObjectTools.cs using Guid(12fae5ddf571a274b9d00aa5dc661956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5cf1c62f14cde5059435cc2ed23a2e5') in 0.000489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.745684 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/Editor/SortUtility.cs
+  artifactKey: Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/Editor/SortUtility.cs using Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0fe6fd2e065aab9038b78d1d632540c') in 0.000488 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 28.616637 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/ArrayUtilities.cs
+  artifactKey: Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/ArrayUtilities.cs using Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2008dce89ac20feb658e6418df40d29f') in 0.000653 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 14.849046 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/UtilityLibraries
+  artifactKey: Guid(8038dedf20fbb194396f733872fff4e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/UtilityLibraries using Guid(8038dedf20fbb194396f733872fff4e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0de8dbf5abf9d8c6e84b9d612de1db96') in 0.000506 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 14.017643 seconds.
+  path: Assets/StandardAssets/HynesSight/Scripts/UtilityLibraries/ArrayUtilities.cs
+  artifactKey: Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StandardAssets/HynesSight/Scripts/UtilityLibraries/ArrayUtilities.cs using Guid(889da20b63b9d4194b2e371b490ede44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8222553f81c7ef6bed7a9d47cfe2ec2d') in 0.001368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
