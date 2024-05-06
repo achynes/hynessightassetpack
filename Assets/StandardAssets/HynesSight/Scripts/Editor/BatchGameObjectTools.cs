@@ -44,7 +44,7 @@ namespace HynesSightEditor
 
 		void OnGUI()
 		{
-			_scrollViewCurrent = EditorGUILayout.BeginScrollView(_scrollViewCurrent, GUILayout.ExpandWidth(true));
+			_scrollViewCurrent = GUILayout.BeginScrollView(_scrollViewCurrent, GUILayout.ExpandWidth(true));
 
 			GUISection_SearchSelection();
 
@@ -56,7 +56,7 @@ namespace HynesSightEditor
 
 			GUISection_ReplaceGameObjects();
 
-			EditorGUILayout.EndScrollView();
+			GUILayout.EndScrollView();
 		}
 
 		void GUISection_SearchSelection()
@@ -69,12 +69,12 @@ namespace HynesSightEditor
 			{
 				float originalLabelWidth = EditorGUIUtility.labelWidth;
 
-				EditorGUILayout.BeginHorizontal();
+				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 110f;
 				_searchSelectionIncludeChildren = EditorGUILayout.Toggle("Include Children", _searchSelectionIncludeChildren);
 				GUILayout.FlexibleSpace();
 				EditorGUIUtility.labelWidth = originalLabelWidth;
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
 				const string searchTextFieldName = "SearchSelectionTextField";
 
@@ -207,11 +207,11 @@ namespace HynesSightEditor
 
 				if (_selectionSearchObjects != null && _selectionSearchObjects.Count > 0)
 				{
-					EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+					GUILayout.BeginVertical(EditorStyles.helpBox);
 
 					for (int i = _selectionSearchObjects.Count - 1; i >= 0; --i)
 					{
-						EditorGUILayout.BeginHorizontal();
+						GUILayout.BeginHorizontal();
 
 						// GUI.enabled allows us to make uneditable object fields for the search results.
 						bool previousGuiEnable = GUI.enabled;
@@ -227,10 +227,10 @@ namespace HynesSightEditor
 						if (deleteResultButtonPressed)
 							_selectionSearchObjects.RemoveAt(i);
 
-						EditorGUILayout.EndHorizontal();
+						GUILayout.EndHorizontal();
 					}
 
-					EditorGUILayout.EndVertical();
+					GUILayout.EndVertical();
 				}
 			}
 
@@ -246,21 +246,21 @@ namespace HynesSightEditor
 			if (_renameExpanded)
 			{
 				// Input field for setting the batch name.
-				EditorGUILayout.BeginHorizontal();
+				GUILayout.BeginHorizontal();
 				GUI.SetNextControlName("Batch Name");
 				EditorGUILayout.LabelField("Name", GUILayout.Width(60));
 				GUILayout.FlexibleSpace();
 				_batchName = EditorGUILayout.TextField(_batchName, GUILayout.Width(80));
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
 				// Dropdown list for setting the indexing style.
-				EditorGUILayout.BeginHorizontal();
+				GUILayout.BeginHorizontal();
 				EditorGUILayout.LabelField("Indexing", GUILayout.Width(60));
 				GUILayout.FlexibleSpace();
 				_indexing = (Indexing)EditorGUILayout.EnumPopup(_indexing, GUILayout.Width(80));
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
-				if (!GUILayout.Button("Rename"))
+				if (GUILayout.Button("Rename"))
 					Rename();
 			}
 

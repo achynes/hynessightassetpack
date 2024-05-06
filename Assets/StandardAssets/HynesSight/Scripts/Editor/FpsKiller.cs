@@ -10,7 +10,7 @@ public class FpsKiller : EditorWindow
 
 	int millisecondsAdded = 0;
 
-	[MenuItem("Dreamfeel/FPS Killer")]
+	[MenuItem("Tools/FPS Killer")]
 	static void Init()
 	{
 		activeWindow = (FpsKiller)GetWindow(typeof(FpsKiller), utility: false, "FPS Killer");
@@ -54,6 +54,9 @@ public class FpsKiller : EditorWindow
 
 		Stopwatch _stopwatch = new Stopwatch();
 		_stopwatch.Start();
+
+		millisecondsAdded = Mathf.Clamp(millisecondsAdded, 0, 2000);
+
 		while (_stopwatch.ElapsedMilliseconds < millisecondsAdded)
 		{
 			// Kill the requested time here

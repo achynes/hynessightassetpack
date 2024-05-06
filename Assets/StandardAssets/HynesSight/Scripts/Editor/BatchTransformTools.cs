@@ -106,7 +106,7 @@ namespace HynesSightEditor
 
         private void OnGUI()
         {
-			_scrollViewCurrent = EditorGUILayout.BeginScrollView(_scrollViewCurrent, GUILayout.ExpandWidth(true));
+			_scrollViewCurrent = GUILayout.BeginScrollView(_scrollViewCurrent, GUILayout.ExpandWidth(true));
 
 			EditorGUILayout.Space();
 
@@ -131,6 +131,8 @@ namespace HynesSightEditor
 			EditorGUILayout.Space();
 
 			GUISection_Modify();
+
+			GUILayout.EndScrollView();
 		}
 
 		void GUISection_Align()
@@ -141,19 +143,26 @@ namespace HynesSightEditor
 
 			if (_alignExpanded)
 			{
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField("Align to:", GUILayout.Width(120));
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField("Align to", GUILayout.Width(120));
 				_alignTarget = (Transform)EditorGUILayout.ObjectField(_alignTarget, typeof(Transform), true);
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
 				EditorGUILayout.Space();
 
+				float originalLabelWidth = EditorGUIUtility.labelWidth;
+
+				EditorGUIUtility.labelWidth = 15f;
 				EditorGUILayoutHelpers.RowOfToggles("X", ref _alignX, "Y", ref _alignY, "Z", ref _alignZ);
 				EditorGUILayout.Space();
-				
+
+				EditorGUIUtility.labelWidth = originalLabelWidth;
+
 				if (GUILayout.Button("Align"))
 					Align();
 			}
+
+			GUILayout.EndVertical();
 		}
 
 		void GUISection_Distribute()
@@ -164,15 +173,15 @@ namespace HynesSightEditor
 
 			if (_distributeExpanded)
 			{
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField("Start Transform:", GUILayout.Width(120));
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField("Start Transform", GUILayout.Width(120));
 				_distributeStartTransform = (Transform)EditorGUILayout.ObjectField(_distributeStartTransform, typeof(Transform), true);
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField("End Transform:", GUILayout.Width(120));
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField("End Transform", GUILayout.Width(120));
 				_distributeEndTransform = (Transform)EditorGUILayout.ObjectField(_distributeEndTransform, typeof(Transform), true);
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
 				EditorGUILayout.Space();
 
@@ -182,7 +191,7 @@ namespace HynesSightEditor
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 60f;
-				_distributePosition = EditorGUILayout.Toggle("Position:", _distributePosition);
+				_distributePosition = EditorGUILayout.Toggle("Position", _distributePosition);
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 
@@ -198,7 +207,7 @@ namespace HynesSightEditor
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 60f;
-				_distributeRotation = EditorGUILayout.Toggle("Rotation:", _distributeRotation);
+				_distributeRotation = EditorGUILayout.Toggle("Rotation", _distributeRotation);
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 
@@ -214,7 +223,7 @@ namespace HynesSightEditor
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 60f;
-				_distributeScale = EditorGUILayout.Toggle("Scale:", _distributeScale);
+				_distributeScale = EditorGUILayout.Toggle("Scale", _distributeScale);
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 
@@ -224,6 +233,8 @@ namespace HynesSightEditor
 					EditorGUILayoutHelpers.RowOfToggles("X", ref _distributeScaleX, "Y", ref _distributeScaleY, "Z", ref _distributeScaleZ);
 				}
 
+				EditorGUIUtility.labelWidth = originalLabelWidth;
+
 				GUILayout.EndVertical();
 
 				EditorGUILayout.Space();
@@ -231,6 +242,8 @@ namespace HynesSightEditor
 				if (GUILayout.Button("Distribute"))
 					Distribute();
 			}
+
+			GUILayout.EndVertical();
 		}
 
 		void GUISection_Grid()
@@ -241,25 +254,33 @@ namespace HynesSightEditor
 
 			if (_gridExpanded)
 			{
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField("Start Transform:", GUILayout.Width(120));
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField("Start Transform", GUILayout.Width(120));
 				_gridStartTransform = (Transform)EditorGUILayout.ObjectField(_gridStartTransform, typeof(Transform), true);
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField("End Transform:", GUILayout.Width(120));
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField("End Transform", GUILayout.Width(120));
 				_gridEndTransform = (Transform)EditorGUILayout.ObjectField(_gridEndTransform, typeof(Transform), true);
-				EditorGUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
 
 				EditorGUILayout.Space();
 
-				EditorGUILayoutHelpers.RowOfIntFields(delayed: false, "X Count", ref _gridCountX, "Y Count", ref _gridCountY, "Z Count", ref _gridCountZ);
+				float originalLabelWidth = EditorGUIUtility.labelWidth;
+
+				EditorGUIUtility.labelWidth = 25f;
+				
+				EditorGUILayoutHelpers.RowOfIntFields(delayed: false, "#X", ref _gridCountX, "#Y", ref _gridCountY, "#Z", ref _gridCountZ);
+
+				EditorGUIUtility.labelWidth = originalLabelWidth;
 
 				EditorGUILayout.Space();
 
 				if (GUILayout.Button("Grid"))
 					Grid();
 			}
+
+			GUILayout.EndVertical();
 		}
 
 		void GUISection_LookAt()
@@ -270,15 +291,15 @@ namespace HynesSightEditor
 
 			if (_lookAtExpanded)
 			{
-				_lookAtTarget = (Transform)EditorGUILayout.ObjectField("Target:", _lookAtTarget, typeof(Transform), allowSceneObjects: true);
+				_lookAtTarget = (Transform)EditorGUILayout.ObjectField("Target", _lookAtTarget, typeof(Transform), allowSceneObjects: true);
 
 				float originalLabelWidth = EditorGUIUtility.labelWidth;
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 15f;
-				_lookAtX = EditorGUILayout.Toggle("X:", _lookAtX);
-				_lookAtY = EditorGUILayout.Toggle("Y:", _lookAtY);
-				_lookAtZ = EditorGUILayout.Toggle("Z:", _lookAtZ);
+				_lookAtX = EditorGUILayout.Toggle("X", _lookAtX);
+				_lookAtY = EditorGUILayout.Toggle("Y", _lookAtY);
+				_lookAtZ = EditorGUILayout.Toggle("Z", _lookAtZ);
 				EditorGUIUtility.labelWidth = originalLabelWidth;
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
@@ -317,8 +338,8 @@ namespace HynesSightEditor
 
 			if (_snapToExpanded)
 			{
-				_transformToSnap = (Transform)EditorGUILayout.ObjectField("Snapped Object:", _transformToSnap, typeof(Transform), allowSceneObjects: true);
-				_snapAnchorTransform = (Transform)EditorGUILayout.ObjectField("Anchor Object:", _snapAnchorTransform, typeof(Transform), allowSceneObjects: true);
+				_transformToSnap = (Transform)EditorGUILayout.ObjectField("Snapped Object", _transformToSnap, typeof(Transform), allowSceneObjects: true);
+				_snapAnchorTransform = (Transform)EditorGUILayout.ObjectField("Anchor Object", _snapAnchorTransform, typeof(Transform), allowSceneObjects: true);
 
 				GUILayout.BeginVertical(EditorStyles.helpBox);
 
@@ -326,7 +347,7 @@ namespace HynesSightEditor
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 60f;
-				_snapPosition = EditorGUILayout.Toggle("Position:", _snapPosition);
+				_snapPosition = EditorGUILayout.Toggle("Position", _snapPosition);
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 
@@ -334,9 +355,9 @@ namespace HynesSightEditor
 				{
 					GUILayout.BeginHorizontal();
 					EditorGUIUtility.labelWidth = 15f;
-					_snapPositionX = EditorGUILayout.Toggle("X:", _snapPositionX);
-					_snapPositionY = EditorGUILayout.Toggle("Y:", _snapPositionY);
-					_snapPositionZ = EditorGUILayout.Toggle("Z:", _snapPositionZ);
+					_snapPositionX = EditorGUILayout.Toggle("X", _snapPositionX);
+					_snapPositionY = EditorGUILayout.Toggle("Y", _snapPositionY);
+					_snapPositionZ = EditorGUILayout.Toggle("Z", _snapPositionZ);
 					GUILayout.FlexibleSpace();
 					GUILayout.EndHorizontal();
 				}
@@ -347,7 +368,7 @@ namespace HynesSightEditor
 
 				GUILayout.BeginHorizontal();
 				EditorGUIUtility.labelWidth = 60f;
-				_snapRotation = EditorGUILayout.Toggle("Rotation:", _snapRotation);
+				_snapRotation = EditorGUILayout.Toggle("Rotation", _snapRotation);
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 
@@ -355,9 +376,9 @@ namespace HynesSightEditor
 				{
 					GUILayout.BeginHorizontal();
 					EditorGUIUtility.labelWidth = 15f;
-					_snapRotationX = EditorGUILayout.Toggle("X:", _snapRotationX);
-					_snapRotationY = EditorGUILayout.Toggle("Y:", _snapRotationY);
-					_snapRotationZ = EditorGUILayout.Toggle("Z:", _snapRotationZ);
+					_snapRotationX = EditorGUILayout.Toggle("X", _snapRotationX);
+					_snapRotationY = EditorGUILayout.Toggle("Y", _snapRotationY);
+					_snapRotationZ = EditorGUILayout.Toggle("Z", _snapRotationZ);
 					GUILayout.FlexibleSpace();
 					GUILayout.EndHorizontal();
 				}
@@ -433,7 +454,7 @@ namespace HynesSightEditor
 			if (_modifyTransformsExpanded)
 			{
 				ArithmeticOperation previousOperation = _modifyTransformsOperation;
-				_modifyTransformsOperation = (ArithmeticOperation)EditorGUILayout.EnumPopup("Op:", _modifyTransformsOperation);
+				_modifyTransformsOperation = (ArithmeticOperation)EditorGUILayout.EnumPopup("Op", _modifyTransformsOperation);
 
 				bool zeroIdentity = _modifyTransformsOperation == ArithmeticOperation.Add || _modifyTransformsOperation == ArithmeticOperation.Subtract;
 
@@ -443,10 +464,10 @@ namespace HynesSightEditor
 					_modifyTransformsAmount = zeroIdentity ? Vector3.zero : Vector3.one;
 				}
 
-				_modifyTransformsPart = (TransformPart)EditorGUILayout.EnumPopup("Target:", _modifyTransformsPart);
+				_modifyTransformsPart = (TransformPart)EditorGUILayout.EnumPopup("Target", _modifyTransformsPart);
 
 				Vector3 previousModifyAmount = _modifyTransformsAmount;
-				_modifyTransformsAmount = EditorGUILayout.Vector3Field("Amount:", _modifyTransformsAmount);
+				_modifyTransformsAmount = EditorGUILayout.Vector3Field("Amount", _modifyTransformsAmount);
 
 				if (_modifyTransformsAmount != previousModifyAmount)
 					_modifyTransformsAmountTweaked = true;
@@ -555,7 +576,8 @@ namespace HynesSightEditor
 			}
 		}
 
-		void Distribute() {
+		void Distribute()
+		{
 			if (null == _distributeStartTransform)
 			{
 				Debug.LogWarning("No Start Transform specified for distribution.");
@@ -581,12 +603,12 @@ namespace HynesSightEditor
 			Vector3 rotationStartEndDelta = _distributeEndTransform.eulerAngles - _distributeStartTransform.eulerAngles;
 			Vector3 scaleStartEndDelta = _distributeEndTransform.localScale - _distributeStartTransform.localScale;
 
-			float distributionMax = (float)(transformsToDistribute.Length - 1);
+			float distributionMax = transformsToDistribute.Length - 1;
 
 			for (int i = 0; i < transformsToDistribute.Length; i++)
 			{
 				Transform transformToDistribute = transformsToDistribute[i];
-				float distributionFactor = (float)i / distributionMax;
+				float distributionFactor = i / distributionMax;
 
 				if (_distributePosition)
 				{

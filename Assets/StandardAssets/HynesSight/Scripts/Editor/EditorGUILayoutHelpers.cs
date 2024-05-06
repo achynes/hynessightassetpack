@@ -50,7 +50,10 @@ namespace HynesSightEditor
 			for (int i = 0; i < toggles.Length; ++i)
 			{
 				string label = labels.Length > i ? labels[i] : string.Empty;
-				toggles[i] = EditorGUILayout.Toggle(label, toggles[i], GUILayout.Width(30f));
+				toggles[i] = EditorGUILayout.Toggle(label, toggles[i]);
+
+				if (i < toggles.Length - 1)
+					EditorGUILayout.Space();
 			}
 
 			GUILayout.FlexibleSpace();
@@ -103,9 +106,12 @@ namespace HynesSightEditor
 				string label = labels.Length > i ? labels[i] : string.Empty;
 				
 				if (delayed)
-					ints[i]	= EditorGUILayout.DelayedIntField(label, ints[i], GUILayout.Width(30f));
+					ints[i]	= EditorGUILayout.DelayedIntField(label, ints[i]);
 				else
-					ints[i]	= EditorGUILayout.IntField(label, ints[i], GUILayout.Width(30f));
+					ints[i]	= EditorGUILayout.IntField(label, ints[i]);
+
+				if (i < ints.Length - 1)
+					EditorGUILayout.Space();
 			}
 
 			GUILayout.FlexibleSpace();
