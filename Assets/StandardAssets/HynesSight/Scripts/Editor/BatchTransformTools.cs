@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace HynesSightEditor
 {
-    public class BatchTransformTool : EditorWindow
+    public class BatchTransformTools : EditorWindow
 	{
 		enum ArithmeticOperation
 		{
@@ -22,7 +22,7 @@ namespace HynesSightEditor
 			Scale
 		}
 
-		static BatchTransformTool _activeWindow;
+		static BatchTransformTools _activeWindow;
 		
 		Vector2 _scrollViewCurrent = Vector2.zero;
 
@@ -95,13 +95,13 @@ namespace HynesSightEditor
 		Vector3 _modifyTransformsAmount = Vector3.one;
 		bool _modifyTransformsAmountTweaked = false;
 
-        [MenuItem("Tools/Batch Transform Tool")]
+        [MenuItem("Tools/Batch Transform Tools")]
         public static void OpenWindow()
         {
             System.Reflection.Assembly assembly = typeof(Editor).Assembly;
             System.Type inspectorWindow = assembly.GetType("UnityEditor.InspectorWindow");
 
-            _activeWindow = EditorWindow.GetWindow<BatchTransformTool>("Transform", true, inspectorWindow);
+            _activeWindow = GetWindow<BatchTransformTools>("Batch Transform Tools", true, inspectorWindow);
         }
 
         private void OnGUI()
