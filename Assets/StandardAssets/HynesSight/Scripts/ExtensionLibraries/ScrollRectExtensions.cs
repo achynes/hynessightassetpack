@@ -85,8 +85,7 @@ public static class ScrollRectExtensions
 		Rect _contentRect = _scrollRect.content.rect;
 		Rect _viewRect = _scrollRect.viewport.rect;
 
-		Rect _elementRectRelativeToContent = Rewired.Utils.MathTools.TransformRect(_element.rect, _element, _scrollRect.content);
-		Rect _elementRectRelativeToView = Rewired.Utils.MathTools.TransformRect(_element.rect, _element, _scrollRect.viewport);
+		Rect _elementRectRelativeToContent = _element.rect.InterTransformRect(_element, _scrollRect.content);
 
 		Vector2 _contentRectSize = _contentRect.size;
 
@@ -111,10 +110,10 @@ public static class ScrollRectExtensions
 
 		// Pick the corner of the selected element furthest from the middle of the space to make sure the whole element is visible when we're done.
 		Vector2 _chosenJumpCorner = _elementNormalizedCorners[0];
-		Vector2 _furthestDistance = Abs(_chosenJumpCorner - _normalMiddle);
+		Vector2 _furthestDistance = (_chosenJumpCorner - _normalMiddle).Abs();
 		for (int n = 1; n < _elementNormalizedCorners.Length; ++n)
 		{
-			Vector2 _distanceToContentMiddle = Abs(_elementNormalizedCorners[n] - _normalMiddle);
+			Vector2 _distanceToContentMiddle = (_elementNormalizedCorners[n] - _normalMiddle).Abs();
 
 			if (_distanceToContentMiddle.x > _furthestDistance.x)
 			{
@@ -129,7 +128,7 @@ public static class ScrollRectExtensions
 			}
 		}
 
-		Rect _viewRectRelativeToContent = Rewired.Utils.MathTools.TransformRect(_viewRect, _scrollRect.viewport, _scrollRect.content);
+		Rect _viewRectRelativeToContent = _viewRect.InterTransformRect(_scrollRect.viewport, _scrollRect.content);
 		Vector2 _viewSizeInContent = _viewRectRelativeToContent.size / _contentRectSize;
 
 		Vector2 _viewPositionInContent = _viewRectRelativeToContent.position;
@@ -141,6 +140,8 @@ public static class ScrollRectExtensions
 		// 0 means visible already, -1 means below the view and 1 means above.
 		int _elementRelationToViewX = 0;
 		int _elementRelationToViewY = 0;
+
+		// @todo: In testing, there is some amount of discrepancy from the expected result. In some use cases, the jump doesn't kick in for elements that are just outside the view space.
 
 		if (_chosenJumpCorner.x < _viewPositionInContent.x)
 			_elementRelationToViewX = -1;
