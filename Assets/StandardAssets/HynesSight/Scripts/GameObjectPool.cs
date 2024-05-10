@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace HynesSight.ObjectPooling
+namespace HynesSight
 {
-	/// <summary>
-	/// Class for pooling GameObjects. Cycles through IPoolableComponents on the GameObject and notifies them when it is pooled.
-	/// </summary>
+	// Interface required by poolable objects and GameObjects. Use the OnPooled function to reset values and state of the object.
+	public interface IPoolableComponent
+	{
+		void OnPooled();
+		void OnUnpooled();
+	}
+
+	// Class for pooling GameObjects. Cycles through IPoolableComponents on the GameObject and notifies them when it is pooled.
 	public class GameObjectPool
 	{
 		// The template for adding more objects to the pool; this should typically be a prefab.
@@ -21,46 +26,51 @@ namespace HynesSight.ObjectPooling
 			_currentlyUnpooledGameObjects = new List<GameObject>(initialPoolSize);
         
 			for (int n = 0; n < initialPoolSize; n++)
-			{
-				AddNewPoolMember();
-			}
+				AddNewPoolMember(startActive: false);
 		}
 
 		public GameObject GetGameObjectFromPool()
 		{
+			GameObject selectedGameObject = null;
+
 			foreach (GameObject gameObject in _pooledGameObjectsWithComponents.Keys)
 			{
 				if (!_currentlyUnpooledGameObjects.Contains(gameObject))
 				{
-					gameObject.SetActive(true);
-
-					_currentlyUnpooledGameObjects.Add(gameObject);
-
-					List<IPoolableComponent> poolableComponents = _pooledGameObjectsWithComponents[gameObject];
-					for (int n = poolableComponents.Count - 1; n > -1; n--)
-					{
-						poolableComponents[n].OnUnpooled();
-					}
-
-					return gameObject;
+					selectedGameObject = gameObject;
+					break;
 				}
 			}
 
-			GameObject newPoolMember = AddNewPoolMember();
-			newPoolMember.SetActive(true);
-			return newPoolMember;
+			if (selectedGameObject == null)
+			 selectedGameObject = AddNewPoolMember(true);
+
+			_currentlyUnpooledGameObjects.Add(selectedGameObject);
+
+			selectedGameObject.SetActive(true);
+
+			List<IPoolableComponent> poolableComponents = _pooledGameObjectsWithComponents[selectedGameObject];
+			for (int n = poolableComponents.Count - 1; n > -1; n--)
+				poolableComponents[n].OnUnpooled();
+
+			return selectedGameObject;
 		}
 
 		public void ReturnGameObjectToPool(GameObject gameObjectToReturn)
 		{
 			gameObjectToReturn.SetActive(false);
+
+			List<IPoolableComponent> poolableComponents = _pooledGameObjectsWithComponents[gameObjectToReturn];
+			for (int n = poolableComponents.Count - 1; n > -1; n--)
+				poolableComponents[n].OnPooled();
+
 			_currentlyUnpooledGameObjects.Remove(gameObjectToReturn);
 		}
 
-		private GameObject AddNewPoolMember()
+		private GameObject AddNewPoolMember(bool startActive)
 		{
 			GameObject newObject = Object.Instantiate(_originalObject);
-			newObject.SetActive(false);
+			newObject.SetActive(startActive);
 
 			MonoBehaviour[] allMonoBehaviors = newObject.GetComponentsInChildren<MonoBehaviour>(true);
 			List<IPoolableComponent> newPoolableComponents = new List<IPoolableComponent>(allMonoBehaviors.Length);
@@ -69,9 +79,7 @@ namespace HynesSight.ObjectPooling
 			{
 				IPoolableComponent poolableComponent = allMonoBehaviors[n] as IPoolableComponent;
 				if (null != poolableComponent)
-				{
 					newPoolableComponents.Add(poolableComponent);
-				}
 			}
 
 			newPoolableComponents.TrimExcess();
@@ -79,13 +87,5 @@ namespace HynesSight.ObjectPooling
 
 			return newObject;
 		}
-	}
-
-	/// <summary>
-	/// Interface required by poolable objects and GameObjects. Use the OnPooled function to reset values and state of the object.
-	/// </summary>
-	public interface IPoolableComponent
-	{
-		void OnUnpooled();
 	}
 }
