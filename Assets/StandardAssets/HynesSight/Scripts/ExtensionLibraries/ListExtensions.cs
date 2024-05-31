@@ -16,4 +16,17 @@ public static class ListExtensions
 		list.Add(newEntry);
 		return list.Count - 1;
 	}
+
+	public static void SetOnIndex<T>(this List<T> list, int index, T newEntry)
+	{
+		if (list.Count > index)
+			list[index] = newEntry;
+		else
+		{
+			while (list.Count < index)
+				list.Add(default(T));
+
+			list.Add(newEntry);
+		}
+	}
 }
