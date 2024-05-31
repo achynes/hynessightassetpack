@@ -142,7 +142,7 @@ namespace HynesSight
 			}
 		}
 
-		private static int StartRepeating(DynamicParamsDelegate inDelegate, float delay, int callCount, bool useUnscaledTime = false, params object[] inParams)
+		public static int StartRepeating(DynamicParamsDelegate inDelegate, float delay, int callCount, bool useUnscaledTime = false, params object[] inParams)
 		{
 			if (inDelegate == null)
 			{
