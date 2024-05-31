@@ -7,13 +7,52 @@ namespace HynesSightEditor.Tweener
 	[CustomEditor(typeof(PositionTweenerComponent))][CanEditMultipleObjects]
 	public sealed class PositionTweenerComponentEditor : TweenerComponentEditor_Base
 	{
-		private SerializedProperty _localPosition,
-								   _muteX,
-								   _muteY,
-								   _muteZ;
+		private SerializedProperty _localPosition;
+		private SerializedProperty _muteX;
+		private SerializedProperty _muteY;
+		private SerializedProperty _muteZ;
+		private SerializedProperty _startType;
+		private SerializedProperty _endType;
+
+		protected override string StartValueName
+		{
+			get
+			{
+				switch ((TransformTweenStartType)_startType.enumValueIndex)
+				{
+					case TransformTweenStartType.Transform:
+						return "_startTransform";
+					case TransformTweenStartType.Vector:
+						return "_startVector";
+					case TransformTweenStartType.Current:
+					default:
+						return null;
+				}
+			}
+		}
+
+		protected override string EndValueName
+		{
+			get
+			{
+				switch ((TransformTweenEndType)_endType.enumValueIndex)
+				{
+					case TransformTweenEndType.Transform:
+						return "_endTransform";
+					case TransformTweenEndType.Vector:
+						return "_endVector";
+					default:
+						return null;
+				}
+			}
+		}
 
 		protected override void OnEnable()
 		{
+			// These must be handled before the base.OnEnable, as its SerializedProperty vars rely on them.
+			_startType = serializedObject.FindProperty("_startType");
+			_endType = serializedObject.FindProperty("_endType");
+
 			base.OnEnable();
 
 			_localPosition = serializedObject.FindProperty("_localPosition");
@@ -25,6 +64,11 @@ namespace HynesSightEditor.Tweener
 		public override void OnInspectorGUI()
 		{
 			serializedObject.Update();
+
+			EditorGUILayout.Space();
+
+			EditorGUILayout.PropertyField(_startType, new GUIContent("Start Type"));
+			EditorGUILayout.PropertyField(_endType, new GUIContent("End Type"));
 
 			EditorGUILayout.Space();
 
@@ -44,10 +88,13 @@ namespace HynesSightEditor.Tweener
 			EditorGUILayout.EndHorizontal();
 			EditorGUILayout.EndHorizontal();
 
-			EditorGUILayout.Space();
+			if ((TransformTweenStartType)_startType.enumValueIndex == TransformTweenStartType.Vector || (TransformTweenEndType)_endType.enumValueIndex == TransformTweenEndType.Vector)
+			{
+				EditorGUILayout.Space();
 
-			label = new GUIContent("Local Position:");
-			EditorGUILayout.PropertyField(_localPosition, label);
+				label = new GUIContent("Local Position:");
+				EditorGUILayout.PropertyField(_localPosition, label);
+			}
 			
 			EditorGUILayout.Space();
 

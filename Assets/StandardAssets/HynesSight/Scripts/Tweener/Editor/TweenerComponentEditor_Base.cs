@@ -21,12 +21,13 @@ namespace HynesSightEditor.Tweener
 								   _onPingEndEvent,
 								   _onPongEndEvent;
 
+		protected virtual string StartValueName { get { return "_startValue"; } }
+		protected virtual string EndValueName { get { return "_endValue"; } }
+
 		protected GUIContent label;
 
 		protected virtual void OnEnable()
 		{
-			_startValue = serializedObject.FindProperty("_startValue");
-			_endValue = serializedObject.FindProperty("_endValue");
 			_playOnStart = serializedObject.FindProperty("_playOnStart");
 			_useUnscaledTime = serializedObject.FindProperty("_useUnscaledTime");
 			_shouldPingPong = serializedObject.FindProperty("_shouldPingPong");
@@ -43,6 +44,12 @@ namespace HynesSightEditor.Tweener
 
 		public override void OnInspectorGUI()
 		{
+			string startValueName = StartValueName;
+			_startValue = (startValueName != null) ? serializedObject.FindProperty(startValueName) : null;
+
+			string endValueName = EndValueName;
+			_endValue = (endValueName != null) ? serializedObject.FindProperty(endValueName) : null;
+
 			serializedObject.Update();
 
 			label = new GUIContent("Unscaled Time:");
@@ -56,8 +63,11 @@ namespace HynesSightEditor.Tweener
 
 			EditorGUILayout.Space();
 
-			label = new GUIContent(_shouldPingPong.boolValue ? "Ping Value:" : "Start Value:");
-			EditorGUILayout.PropertyField(_startValue, label);
+			if (_startValue != null)
+			{
+				label = new GUIContent(_shouldPingPong.boolValue ? "Ping Value:" : "Start Value:");
+				EditorGUILayout.PropertyField(_startValue, label);
+			}
 
 			label = new GUIContent(_shouldPingPong.boolValue ? "Pong Value:" : "End Value:");
 			EditorGUILayout.PropertyField(_endValue, label);
