@@ -26,8 +26,8 @@ namespace HynesSight.Tweening
 					 _isPaused;
 
 		[SerializeField]
-		protected float _pingDuration,
-						_pongDuration;
+		protected float _pingDuration = 1.0f,
+						_pongDuration = 1.0f;
 
 		[SerializeField]
 		protected int _loopCount = 1;
